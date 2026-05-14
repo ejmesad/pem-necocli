@@ -15,10 +15,10 @@
                 <p style="color:rgba(255,255,255,0.7);font-size:12px;margin:4px 0 0;">Comparte una publicación de Facebook o YouTube relacionada con el PEM</p>
             </div>
 
-            <form method="POST" action="{{ route('panel.huellas.store') }}" style="padding:24px;">
+            <form method="POST" action="{{ route('panel.huellas.store') }}" enctype="multipart/form-data" style="padding:24px;">
                 @csrf
 
-                <!-- URL -->
+                {{-- URL --}}
                 <div style="margin-bottom:20px;">
                     <label style="display:block;font-size:12px;font-weight:800;color:var(--texto);margin-bottom:8px;font-family:'Nunito',sans-serif;">
                         🔗 URL de la publicación *
@@ -31,7 +31,7 @@
                     @error('url')<div style="color:var(--coral);font-size:11px;margin-top:4px;">{{ $message }}</div>@enderror
                 </div>
 
-                <!-- Plataforma -->
+                {{-- Plataforma --}}
                 <div style="margin-bottom:20px;">
                     <label style="display:block;font-size:12px;font-weight:800;color:var(--texto);margin-bottom:8px;font-family:'Nunito',sans-serif;">
                         📱 Plataforma *
@@ -55,7 +55,7 @@
                     @error('platform')<div style="color:var(--coral);font-size:11px;margin-top:4px;">{{ $message }}</div>@enderror
                 </div>
 
-                <!-- Título -->
+                {{-- Título --}}
                 <div style="margin-bottom:20px;">
                     <label style="display:block;font-size:12px;font-weight:800;color:var(--texto);margin-bottom:8px;font-family:'Nunito',sans-serif;">
                         📝 Título *
@@ -69,7 +69,7 @@
                     @error('title')<div style="color:var(--coral);font-size:11px;margin-top:4px;">{{ $message }}</div>@enderror
                 </div>
 
-                <!-- Descripción -->
+                {{-- Descripción --}}
                 <div style="margin-bottom:20px;">
                     <label style="display:block;font-size:12px;font-weight:800;color:var(--texto);margin-bottom:8px;font-family:'Nunito',sans-serif;">
                         💬 Descripción (opcional)
@@ -81,7 +81,18 @@
                         onblur="this.style.borderColor='var(--border)'">{{ old('description') }}</textarea>
                 </div>
 
-                <!-- Línea estratégica -->
+                {{-- Miniatura --}}
+                <div style="margin-bottom:20px;">
+                    <label style="display:block;font-size:12px;font-weight:800;color:var(--texto);margin-bottom:8px;font-family:'Nunito',sans-serif;">
+                        🖼️ Miniatura (opcional — YouTube la genera automático)
+                    </label>
+                    <input type="file" name="thumbnail" accept="image/*"
+                        style="width:100%;padding:11px 14px;border:2px solid var(--border);border-radius:var(--radius-s);font-size:14px;font-family:'Nunito Sans',sans-serif;background:var(--white);">
+                    <div style="font-size:11px;color:var(--gris-l);margin-top:4px;">PNG, JPG o WebP. Máx 2MB. Recomendado para publicaciones de Facebook.</div>
+                    @error('thumbnail')<div style="color:var(--coral);font-size:11px;margin-top:4px;">{{ $message }}</div>@enderror
+                </div>
+
+                {{-- Línea estratégica --}}
                 <div style="margin-bottom:20px;">
                     <label style="display:block;font-size:12px;font-weight:800;color:var(--texto);margin-bottom:8px;font-family:'Nunito',sans-serif;">
                         🎯 Línea estratégica *
@@ -98,7 +109,7 @@
                     @error('strategic_line_id')<div style="color:var(--coral);font-size:11px;margin-top:4px;">{{ $message }}</div>@enderror
                 </div>
 
-                <!-- Colegio -->
+                {{-- Colegio --}}
                 @if($schools->count() > 0)
                 <div style="margin-bottom:24px;">
                     <label style="display:block;font-size:12px;font-weight:800;color:var(--texto);margin-bottom:8px;font-family:'Nunito',sans-serif;">
@@ -116,7 +127,7 @@
                 </div>
                 @endif
 
-                <!-- Botones -->
+                {{-- Botones --}}
                 <div style="display:flex;gap:12px;">
                     <button type="submit"
                         style="flex:1;padding:12px;background:var(--caribe);color:#fff;border:none;border-radius:var(--radius-s);font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .2s;"

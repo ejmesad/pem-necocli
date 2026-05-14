@@ -10,13 +10,13 @@ class SocialPost extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'url', 'title', 'description', 'platform',
-        'strategic_line_id', 'school_id', 'submitted_by',
-        'approved_by', 'rejected_by', 'status',
-        'approval_reason', 'rejection_reason',
-        'featured', 'thumbnail_url', 'embed_html',
-        'oembed_data', 'fetched_at', 'approved_at',
-    ];
+    'url', 'title', 'description', 'platform',
+    'strategic_line_id', 'school_id', 'submitted_by',
+    'approved_by', 'rejected_by', 'status',
+    'approval_reason', 'rejection_reason',
+    'featured', 'thumbnail_url', 'thumbnail_path',
+    'embed_html', 'oembed_data', 'fetched_at', 'approved_at',
+];
 
     protected $casts = [
         'featured'    => 'boolean',
