@@ -1,0 +1,155 @@
+/* ═══════════════════════════════════════════════════════════════
+   PEM NECOCLI — DESIGN SYSTEM v5 (paleta A definitiva)
+   Pegar en resources/css/pem-tokens.css o como <style> en layout maestro
+   ═══════════════════════════════════════════════════════════════ */
+
+:root{
+  /* ── PRIMARIOS (5 colores del logo + caribe institucional) ── */
+  --pem-navy:     #0B2540;   /* tronco / textos / institucional */
+  --pem-arena:    #C8904A;   /* raices / tierra del Uraba */
+  --pem-palma:    #2D8A4E;   /* hojas grandes / vida / vegetacion */
+  --pem-sol:      #F5A820;   /* sol caribeno / acentos calidos / botones primarios */
+  --pem-turquesa: #05C2D8;   /* mar de Necocli / acentos frescos */
+  --pem-coral:    #E8756A;   /* calidez humana / estados de alerta */
+  --pem-caribe:   #0891B2;   /* caribe profundo / links / botones secundarios */
+  --pem-lila:     #8B52B0;   /* reservado para badges de gestion */
+
+  /* ── TONOS CLAROS (para fondos, badges, hover) ── */
+  --pem-sol-l:      #FFF3D6;
+  --pem-palma-l:    #EFF8F2;
+  --pem-turquesa-l: #E0F9FC;
+  --pem-caribe-l:   #E0F9FC;
+  --pem-coral-l:    #FEF0EE;
+  --pem-lila-l:     #F3EEF8;
+  --pem-arena-l:    #FBF5E8;
+
+  /* ── TONOS OSCUROS (para hover de botones, textos sobre claro) ── */
+  --pem-sol-d:      #C8840A;
+  --pem-palma-d:    #1E5F36;
+  --pem-caribe-d:   #076F90;
+  --pem-coral-d:    #C84B40;
+
+  /* ── NEUTROS ── */
+  --pem-texto:   #1A3344;   /* texto principal sobre fondo claro */
+  --pem-gris:    #5A6B82;   /* texto secundario */
+  --pem-gris-l:  #94A3B8;   /* texto terciario / hints */
+  --pem-border:  #E2EBF4;   /* bordes sutiles */
+  --pem-bg:      #F5F4EF;   /* fondo de la app */
+  --pem-crema:   #F6F4EF;   /* fondo del logo, paneles destacados */
+  --pem-white:   #FFFFFF;
+
+  /* ── TIPOGRAFIA ── */
+  --pem-font-display: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+  --pem-font-body:    'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
+
+  /* ── ESPACIADO Y FORMA ── */
+  --pem-radius-s:   8px;
+  --pem-radius-m:   12px;
+  --pem-radius-l:   16px;
+  --pem-radius-xl:  24px;
+
+  /* ── SOMBRAS ── */
+  --pem-shadow-s:   0 2px 8px rgba(11,37,64,.06);
+  --pem-shadow-m:   0 4px 16px rgba(11,37,64,.10);
+  --pem-shadow-l:   0 8px 30px rgba(11,37,64,.14);
+
+  /* ── LAYOUT ── */
+  --pem-sidebar-w:  228px;
+  --pem-topbar-h:   56px;
+
+  /* ── COMPATIBILIDAD con sistema v4 anterior (alias) ── */
+  --sol: var(--pem-sol);  --sol-l: var(--pem-sol-l);  --sol-d: var(--pem-sol-d);
+  --caribe: var(--pem-caribe);  --caribe-d: var(--pem-caribe-d);
+  --turquesa: var(--pem-turquesa);  --tur-l: var(--pem-turquesa-l);
+  --palma: var(--pem-palma);  --palma-l: var(--pem-palma-l);
+  --arena: var(--pem-arena);  --arena-l: var(--pem-arena-l);
+  --coral: var(--pem-coral);  --coral-l: var(--pem-coral-l);
+  --lila: var(--pem-lila);  --lila-l: var(--pem-lila-l);
+  --navy: var(--pem-navy);
+  --texto: var(--pem-texto);  --gris: var(--pem-gris);  --gris-l: var(--pem-gris-l);
+  --border: var(--pem-border);  --bg: var(--pem-bg);  --white: var(--pem-white);
+  --radius: var(--pem-radius-m);  --radius-s: var(--pem-radius-s);
+  --shadow: var(--pem-shadow-s);  --shadow-m: var(--pem-shadow-m);
+}
+
+/* ─── BASE ─────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:var(--pem-font-body);
+  background:var(--pem-bg);
+  color:var(--pem-texto);
+  font-size:14px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,h5,h6{font-family:var(--pem-font-display);}
+a{color:var(--pem-caribe);text-decoration:none;}
+a:hover{color:var(--pem-caribe-d);}
+
+/* ─── BOTONES ─────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--pem-font-display);font-weight:800;
+  border-radius:var(--pem-radius-s);
+  padding:10px 20px;font-size:13px;
+  transition:all .15s;cursor:pointer;border:none;
+  text-decoration:none;
+}
+.btn-primary{background:var(--pem-sol);color:#fff;box-shadow:0 2px 8px rgba(245,168,32,.3);}
+.btn-primary:hover{background:var(--pem-sol-d);transform:translateY(-1px);color:#fff;}
+.btn-secondary{background:var(--pem-caribe);color:#fff;}
+.btn-secondary:hover{background:var(--pem-caribe-d);transform:translateY(-1px);color:#fff;}
+.btn-outline{background:transparent;color:var(--pem-gris);border:1.5px solid var(--pem-border);}
+.btn-outline:hover{border-color:var(--pem-caribe);color:var(--pem-caribe);}
+.btn-success{background:var(--pem-palma);color:#fff;}
+.btn-danger{background:var(--pem-coral);color:#fff;}
+.btn-ghost{background:transparent;color:var(--pem-gris);}
+.btn-ghost:hover{background:var(--pem-bg);color:var(--pem-navy);}
+.btn-full{width:100%;justify-content:center;}
+.btn-lg{padding:14px 28px;font-size:15px;}
+
+/* ─── BADGES ─────────────────────────────────────── */
+.badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:10px;font-weight:800;padding:3px 9px;
+  border-radius:10px;font-family:var(--pem-font-display);
+  text-transform:uppercase;letter-spacing:.05em;
+}
+.badge-sol{background:var(--pem-sol-l);color:var(--pem-sol-d);}
+.badge-palma{background:var(--pem-palma-l);color:var(--pem-palma);}
+.badge-caribe{background:var(--pem-caribe-l);color:var(--pem-caribe);}
+.badge-coral{background:var(--pem-coral-l);color:var(--pem-coral-d);}
+.badge-lila{background:var(--pem-lila-l);color:var(--pem-lila);}
+
+/* ─── CARDS ─────────────────────────────────────── */
+.card{
+  background:var(--pem-white);
+  border:1px solid var(--pem-border);
+  border-radius:var(--pem-radius-m);
+  overflow:hidden;
+}
+.card:hover{box-shadow:var(--pem-shadow-s);}
+.card-body{padding:18px;}
+.card-header{padding:18px 18px 0;}
+.card-accent-caribe{border-top:4px solid var(--pem-caribe);}
+.card-accent-sol{border-top:4px solid var(--pem-sol);}
+.card-accent-palma{border-top:4px solid var(--pem-palma);}
+
+/* ─── FORM INPUTS ─────────────────────────────────────── */
+.form-input,.form-select,.form-textarea{
+  width:100%;padding:11px 14px;
+  border:2px solid var(--pem-border);
+  border-radius:var(--pem-radius-s);
+  font-size:14px;font-family:var(--pem-font-body);
+  background:var(--pem-white);outline:none;
+  transition:border-color .15s;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{
+  border-color:var(--pem-turquesa);
+}
+.form-label{
+  display:block;font-size:12px;font-weight:800;
+  color:var(--pem-navy);text-transform:uppercase;
+  letter-spacing:.06em;margin-bottom:7px;
+  font-family:var(--pem-font-display);
+}

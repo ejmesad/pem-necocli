@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="520" height="120">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&amp;display=swap');
+    .titleH{font-family:'Nunito',sans-serif;font-weight:900;font-size:28px;fill:#0B2540;}
+    .subH{font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;fill:#0B2540;letter-spacing:2.5px;opacity:0.7;}</style>
+  </defs>
+  <g transform="translate(0,0) scale(0.18)">
+    
+<g transform="translate(0,0)">
+  <g transform="translate(50,34)">
+    <line x1="250" y1="380" x2="250" y2="470" stroke="#C8904A" stroke-width="22" stroke-linecap="round"/>
+    <path d="m 250,410 c -46.66667,0 -66.54367,54.90775 -110,40" stroke="#C8904A" stroke-width="22" fill="none" stroke-linecap="round"/>
+    <path d="m 250,410 c 46.66667,0 72.14022,55.70726 110,40" stroke="#C8904A" stroke-width="22" fill="none" stroke-linecap="round"/>
+    <line x1="250" y1="380" x2="250" y2="470" stroke="#F6F4EF" stroke-width="4" stroke-linecap="round"/>
+    <path d="m 250,410 c -46.66667,0 -68.94219,56.50677 -110,40" stroke="#F6F4EF" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="m 250,410 c 46.66667,0 71.34071,58.90529 110,40" stroke="#F6F4EF" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+  <line x1="300" y1="214" x2="300" y2="434" stroke="#0B2540" stroke-width="34" stroke-linecap="round"/>
+  <line x1="300" y1="229" x2="300" y2="419" stroke="#C8904A" stroke-width="8" stroke-linecap="round"/>
+  <line x1="220" y1="274" x2="300" y2="194" stroke="#0B2540" stroke-width="4" stroke-linecap="round"/>
+  <line x1="380" y1="274" x2="300" y2="194" stroke="#0B2540" stroke-width="4" stroke-linecap="round"/>
+  <line x1="180" y1="174" x2="220" y2="274" stroke="#0B2540" stroke-width="4" stroke-linecap="round"/>
+  <line x1="420" y1="174" x2="380" y2="274" stroke="#0B2540" stroke-width="4" stroke-linecap="round"/>
+  <line x1="300" y1="94" x2="300" y2="194" stroke="#0B2540" stroke-width="4" stroke-linecap="round"/>
+  <g transform="translate(220,274)"><circle r="75" fill="#2D8A4E"/><circle r="55" stroke="#F6F4EF" stroke-width="6" fill="none"/><circle r="35" stroke="#F6F4EF" stroke-width="6" fill="none"/></g>
+  <g transform="translate(380,274)"><circle r="75" fill="#2D8A4E"/><circle r="55" stroke="#F6F4EF" stroke-width="6" fill="none"/><circle r="35" stroke="#F6F4EF" stroke-width="6" fill="none"/></g>
+  <g transform="translate(300,194)"><circle r="85" fill="#2D8A4E"/><circle r="60" stroke="#F6F4EF" stroke-width="6" fill="none"/><circle r="35" stroke="#F6F4EF" stroke-width="6" fill="none"/></g>
+  <g transform="translate(180,174)"><circle r="55" fill="#05C2D8"/><circle r="35" stroke="#F6F4EF" stroke-width="6" fill="none"/></g>
+  <g transform="translate(420,174)"><circle r="55" fill="#E8756A"/><circle r="35" stroke="#F6F4EF" stroke-width="6" fill="none"/></g>
+  <g transform="translate(300,94)"><circle r="45" fill="#F5A820"/><circle r="25" stroke="#F6F4EF" stroke-width="6" fill="none"/></g>
+  <g fill="#C8904A" stroke="#F6F4EF" stroke-width="3" transform="translate(50,34)">
+    <circle cx="170" cy="240" r="12"/><circle cx="330" cy="240" r="12"/><circle cx="250" cy="160" r="12"/>
+    <circle cx="130" cy="140" r="12"/><circle cx="370" cy="140" r="12"/><circle cx="250" cy="60" r="12"/><circle cx="250" cy="260" r="12"/>
+  </g>
+</g>
+  </g>
+  <text x="125" y="58" class="titleH">PEM Necocli</text>
+  <text x="125" y="80" class="subH">MESA MUNICIPAL DE EDUCACION</text>
+</svg>

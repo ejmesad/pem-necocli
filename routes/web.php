@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\HuellaModerationController;
 
 // Página pública principal
 Route::get('/', function () {
-    return view('pem');
+    return view('home');
 });
 
 // Zona pública - Huellas
@@ -28,6 +28,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::patch('huellas/{post}/reject', [HuellaModerationController::class, 'reject'])->name('huellas.reject');
     Route::patch('huellas/{post}/feature', [HuellaModerationController::class, 'feature'])->name('huellas.feature');
     Route::get('huellas/publicadas', [HuellaModerationController::class, 'published'])->name('huellas.published');
+});
+Route::get('/test-layout', function () {
+    return view('test-layout');
 });
 
 // Dashboard
