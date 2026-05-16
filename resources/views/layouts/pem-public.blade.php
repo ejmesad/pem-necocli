@@ -27,6 +27,9 @@
         .pem-nav-cta{background:var(--pem-sol)!important;color:#fff!important;box-shadow:0 2px 8px rgba(245,168,32,.3);}
         .pem-nav-cta:hover{background:var(--pem-sol-d)!important;transform:translateY(-1px);}
         .pem-nav-toggle{display:none;background:none;border:none;font-size:22px;color:var(--pem-navy);cursor:pointer;padding:6px;}
+        .pem-aliados--header{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+        .pem-aliados--header .pem-aliado{display:inline-flex;align-items:center;text-decoration:none;}
+        .pem-aliados--header .pem-aliado img{height:34px;width:auto;max-width:80px;object-fit:contain;}
         @media (max-width: 880px){.pem-nav-toggle{display:block;margin-left:auto;}.pem-nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--pem-white);border-top:1px solid var(--pem-border);box-shadow:0 6px 20px rgba(11,37,64,.1);padding:8px;gap:2px;display:none;}.pem-nav-links.open{display:flex;}.pem-nav-links a{padding:12px 16px;text-align:left;}}
         .pem-main{flex:1;}
         .pem-footer{background:var(--pem-navy);color:rgba(255,255,255,.7);margin-top:80px;padding:48px 24px 24px;}
@@ -59,8 +62,12 @@
 
 <header class="pem-nav">
     <div class="pem-nav-inner">
+        
         <a href="{{ url('/') }}" class="pem-nav-brand">
             <img src="{{ asset('images/logo-pem-horizontal.svg') }}" alt="PEM Necoclí">
+            <img src="{{ asset('images/logoescnecf.png') }}" alt="Escudo Necoclí" style="height:40px;width:auto;">
+            <img src="{{ asset('images/logonecsf.png') }}" alt="Necoclí" style="height:40px;width:auto;">
+            <img src="{{ asset('images/logo_fgs.svg') }}" alt="Fundación Grupo Social" style="height:40px;width:auto;">
         </a>
         <button class="pem-nav-toggle" onclick="document.getElementById('pemNavLinks').classList.toggle('open')">
             <i class="fas fa-bars"></i>

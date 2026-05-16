@@ -28,8 +28,9 @@ button{font-family:inherit;cursor:pointer;}
 
 /* Header con árbol PEM + aliados */
 .allies-bar{background:#fff;border-bottom:1px solid var(--border);padding:18px 24px;}
-.allies-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;}
-.ally-logo{display:flex;align-items:center;justify-content:center;height:64px;}
+/* .allies-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:nowrap;} */
+.allies-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:flex-start;gap:24px;flex-wrap:wrap;}
+.ally-logo{display:flex;align-items:center;justify-content:center;height:40px;}
 
 /* Logo PEM (árbol) — identidad propia */
 .pem-tree img{height:64px;width:auto;display:block;}
@@ -157,7 +158,7 @@ button{font-family:inherit;cursor:pointer;}
 
     <div class="ally-sep"></div>
 
-    {{-- Aliados --}}
+    <!-- {{-- Aliados --}}
     <div class="ally-logo logo-necocli">
       <div class="logo-necocli-letters">
         <span class="l1">N</span><span class="l2">e</span><span class="l3">C</span><span class="l4">o</span><span class="l5">c</span><span class="l6">l</span><span class="l7">í</span>
@@ -182,10 +183,17 @@ button{font-family:inherit;cursor:pointer;}
     </div>
   </div>
 </div>
+ -->
+{{-- Aliados reales --}}
+    <img src="{{ asset('images/logonecsf.png') }}" alt="Necoclí tú perteneces aquí" style="height:100px;width:auto;">
+    <img src="{{ asset('images/logoescnecf.png') }}" alt="Municipio de Necoclí" style="height:90px;width:auto;">
+    <img src="{{ asset('images/logo_fgs.svg') }}" alt="Fundación Grupo Social" style="height:30px;width:auto;">
+  </div>
+</div>
 
 {{-- TÍTULO --}}
 <div class="main-title">
-  <h1>Mesa de Educación Necoclí</h1>
+  <h1>Mesa Municipal de Educación Necoclí</h1>
   <p>Plan Educativo Municipal 2025–2035</p>
 </div>
 

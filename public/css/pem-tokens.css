@@ -153,3 +153,37 @@ a:hover{color:var(--pem-caribe-d);}
   letter-spacing:.06em;margin-bottom:7px;
   font-family:var(--pem-font-display);
 }
+
+
+
+
+/* ─── RESPONSIVE: TABLET (640–880px) ─────────────────────── */
+@media (max-width: 880px){
+    .pem-aliados{ gap:10px; }
+    .pem-aliados--header .pem-aliado img{
+        height:32px;
+        max-width:70px;
+    }
+}
+
+/* ─── RESPONSIVE: MÓVIL (< 640px) ────────────────────────── */
+@media (max-width: 640px){
+    .pem-aliados{ gap:8px; }
+    .pem-aliados--header .pem-aliado img{
+        height:28px;
+        max-width:70px;
+    }
+    .pem-nav-links{
+    display:flex !important;
+    margin-left:auto;
+    }
+    .pem-aliados--footer{
+        flex-wrap:wrap;
+        justify-content:flex-start;
+    }
+    .pem-aliados--footer .pem-aliado img{
+        height:36px;
+        max-width:80px;
+    }
+}
+
