@@ -7,6 +7,13 @@
         </div>
     @endif
 
+    {{-- BUG-006: mensaje de error cuando se intenta aprobar sin línea estratégica --}}
+    @if(session('error'))
+        <div style="background:#FEE2E2;border:1px solid #FCA5A5;border-radius:var(--radius);padding:14px 18px;margin-bottom:20px;color:#991B1B;font-weight:700;">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <!-- STATS -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
         <div style="background:var(--sol-l);border-radius:var(--radius);padding:16px;text-align:center;border:1px solid #F5D27A;">
@@ -38,7 +45,7 @@
                             @endif
                             <div style="font-size:11px;color:var(--gris-l);display:flex;flex-wrap:wrap;gap:8px;">
                                 <span>👤 {{ $post->submitter->name ?? 'N/A' }}</span>
-                                <span>🎯 {{ $post->strategicLine->nombre ?? 'Sin línea' }}</span>
+                                <span>🎯 {{ $post->strategicLine->nombre ?? '⚠️ Sin línea' }}</span>
                                 <span>🕐 {{ $post->created_at->diffForHumans() }}</span>
                             </div>
                             <a href="{{ $post->url }}" target="_blank"
@@ -47,17 +54,39 @@
                             </a>
                         </div>
                     </div>
-                    <div style="padding:12px 20px;background:var(--bg);border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;">
-                        <!-- Aprobar -->
-                        <form method="POST" action="{{ route('admin.huellas.approve', $post) }}" style="display:inline;">
+
+                    <div style="padding:12px 20px;background:var(--bg);border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;">
+
+                        {{-- Aprobar — BUG-006: incluye selector de línea si la huella no tiene una --}}
+                        <form method="POST" action="{{ route('admin.huellas.approve', $post) }}" style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;">
                             @csrf @method('PATCH')
+
+                            @if(! $post->strategic_line_id)
+                                {{-- Sin línea: mostrar selector obligatorio --}}
+                                <div style="display:flex;flex-direction:column;gap:3px;">
+                                    <label style="font-size:10px;font-weight:700;color:var(--coral);">
+                                        ⚠️ Asignar línea estratégica *
+                                    </label>
+                                    <select name="strategic_line_id" required
+                                        style="padding:7px 10px;border:2px solid var(--coral);border-radius:var(--radius-s);font-size:12px;font-family:'Nunito Sans',sans-serif;background:var(--white);">
+                                        <option value="">Selecciona...</option>
+                                        @foreach($lines as $line)
+                                            <option value="{{ $line->id }}">{{ $line->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            @else
+                                {{-- Ya tiene línea: pasarla oculta --}}
+                                <input type="hidden" name="strategic_line_id" value="{{ $post->strategic_line_id }}">
+                            @endif
+
                             <button type="submit"
-                                style="padding:8px 16px;background:var(--palma);color:#fff;border:none;border-radius:var(--radius-s);font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;">
+                                style="padding:8px 16px;background:var(--palma);color:#fff;border:none;border-radius:var(--radius-s);font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;align-self:flex-end;">
                                 ✅ Aprobar
                             </button>
                         </form>
 
-                        <!-- Rechazar -->
+                        {{-- Rechazar --}}
                         <form method="POST" action="{{ route('admin.huellas.reject', $post) }}" style="display:inline-flex;align-items:center;gap:6px;">
                             @csrf @method('PATCH')
                             <select name="rejection_reason"

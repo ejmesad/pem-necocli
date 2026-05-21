@@ -1,14 +1,14 @@
 {{-- ════════════════════════════════════════════════════════════════
      PEM NECOCLÍ — HOME (v2 — árbol PEM + playa mejorada)
      resources/views/home.blade.php
-     ═══════════════════════════════════════════════════════════════ --}}
+     ════════════════════════════════════════════════════════════════ --}}
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<title>Mesa de Educación Necoclí — Plan Educativo Municipal</title>
+<title>Mesa de Educación Necoclí – Plan Educativo Municipal</title>
 <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo-pem-simbolo.svg') }}">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -28,7 +28,6 @@ button{font-family:inherit;cursor:pointer;}
 
 /* Header con árbol PEM + aliados */
 .allies-bar{background:#fff;border-bottom:1px solid var(--border);padding:18px 24px;}
-/* .allies-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:nowrap;} */
 .allies-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:flex-start;gap:24px;flex-wrap:wrap;}
 .ally-logo{display:flex;align-items:center;justify-content:center;height:40px;}
 
@@ -158,33 +157,7 @@ button{font-family:inherit;cursor:pointer;}
 
     <div class="ally-sep"></div>
 
-    <!-- {{-- Aliados --}}
-    <div class="ally-logo logo-necocli">
-      <div class="logo-necocli-letters">
-        <span class="l1">N</span><span class="l2">e</span><span class="l3">C</span><span class="l4">o</span><span class="l5">c</span><span class="l6">l</span><span class="l7">í</span>
-      </div>
-      <div class="logo-necocli-sub">Tú perteneces aquí</div>
-    </div>
-
-    <div class="ally-logo logo-municipio">
-      <div class="logo-municipio-shield">MUNI<br>NECO</div>
-      <div class="logo-municipio-text">
-        <div class="logo-municipio-t1">MUNICIPIO DE</div>
-        <div class="logo-municipio-t2">NECOCLÍ</div>
-      </div>
-    </div>
-
-    <div class="ally-logo logo-fgs">
-      <div class="logo-fgs-hex">F</div>
-      <div class="logo-fgs-text">
-        <div class="logo-fgs-t1">FUNDACIÓN</div>
-        <div class="logo-fgs-t2">GRUPO SOCIAL</div>
-      </div>
-    </div>
-  </div>
-</div>
- -->
-{{-- Aliados reales --}}
+    {{-- Aliados reales --}}
     <img src="{{ asset('images/logonecsf.png') }}" alt="Necoclí tú perteneces aquí" style="height:100px;width:auto;">
     <img src="{{ asset('images/logoescnecf.png') }}" alt="Municipio de Necoclí" style="height:90px;width:auto;">
     <img src="{{ asset('images/logo_fgs.svg') }}" alt="Fundación Grupo Social" style="height:30px;width:auto;">
@@ -297,7 +270,7 @@ button{font-family:inherit;cursor:pointer;}
       <div class="sb-body">
         <div class="sb-school">IE Rural El Pescador</div>
         <div class="sb-post">Nuevo laboratorio en marcha!</div>
-        <a href="#colegios" class="sb-link">Ver todos los colegios →</a>
+        <a href="{{ route('colegios.index') }}" class="sb-link">Ver todos los colegios →</a>
       </div>
     </div>
   </div>

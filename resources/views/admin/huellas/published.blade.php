@@ -55,7 +55,7 @@
         <div style="margin-top:20px;">{{ $posts->links() }}</div>
     @else
         <div style="background:var(--white);border-radius:16px;border:1px solid var(--border);padding:48px;text-align:center;">
-            <div style="font-size:48px;margin-bottom:16px;">📭</div>
+            <div style="font-size:48px;margin-bottom:16px;">🔭</div>
             <h3 style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px;">Sin huellas publicadas</h3>
             <p style="font-size:13px;color:var(--gris);">Aprueba huellas desde la cola de moderación.</p>
             <a href="{{ route('admin.huellas.moderation') }}"

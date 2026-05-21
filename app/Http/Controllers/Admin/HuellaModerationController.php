@@ -30,12 +30,29 @@ class HuellaModerationController extends Controller
         return view('admin.huellas.moderation', compact('posts', 'lines', 'stats'));
     }
 
-    public function approve(SocialPost $post)
+    public function approve(SocialPost $post, Request $request)
     {
+        // BUG-006 (OI-017): validar que la huella tenga línea estratégica antes de aprobar.
+        // Si el remitente no la eligió (OI-020), el admin puede asignarla aquí.
+        $validated = $request->validate([
+            'strategic_line_id' => 'nullable|exists:strategic_lines,id',
+        ]);
+
+        // Usar la línea enviada por el form (si el admin la seleccionó),
+        // o la que ya traía la huella. Si ninguna está presente, bloquear.
+        $lineId = $validated['strategic_line_id'] ?? $post->strategic_line_id;
+
+        if (empty($lineId)) {
+            return back()
+                ->withInput()
+                ->with('error', 'Debes asignar una línea estratégica antes de aprobar esta huella.');
+        }
+
         $post->update([
-            'status'      => 'approved',
-            'approved_by' => auth()->id(),
-            'approved_at' => now(),
+            'status'             => 'approved',
+            'strategic_line_id'  => $lineId,
+            'approved_by'        => auth()->id(),
+            'approved_at'        => now(),
         ]);
 
         return back()->with('success', '✅ Huella aprobada.');
@@ -58,8 +75,10 @@ class HuellaModerationController extends Controller
 
     public function feature(SocialPost $post)
     {
-        $post->update(['featured' => !$post->featured]);
-        return back()->with('success', '⭐ Estado de destacada actualizado.');
+        $post->update(['featured' => ! $post->featured]);
+
+        $msg = $post->featured ? '⭐ Huella destacada.' : '⭐ Huella quitada de destacadas.';
+        return back()->with('success', $msg);
     }
 
     public function published(Request $request)
