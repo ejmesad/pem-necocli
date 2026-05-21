@@ -50,4 +50,8 @@ Route::middleware(['auth', 'role:admin_mesa|superadmin'])
         Route::get('huellas/publicadas',         [HuellaModerationController::class, 'published'])->name('huellas.published');
     });
 
+    Route::get('/quienes-somos', function () {
+    return view('quienes-somos');
+    })->name('quienes-somos');
+
 require __DIR__.'/auth.php';

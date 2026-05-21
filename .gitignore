@@ -26,3 +26,5 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 #/public/setup.php
+
+resources/views/partials/Veredas_Antioquia.geojson
