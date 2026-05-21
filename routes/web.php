@@ -54,4 +54,8 @@ Route::middleware(['auth', 'role:admin_mesa|superadmin'])
     return view('quienes-somos');
     })->name('quienes-somos');
 
+    Route::get('/dashboard-pem', function () {
+    return view('dashboard-pem');
+    })->name('dashboard-pem');
+
 require __DIR__.'/auth.php';

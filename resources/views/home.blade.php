@@ -185,6 +185,9 @@ button{font-family:inherit;cursor:pointer;}
       <a href="{{ url('/nuestras-huellas') }}" class="btn-cta btn-cta-blue">
         <span class="btn-cta-icon">📋</span> Ver proyectos
       </a>
+      <a href="{{ route('dashboard-pem') }}" class="btn-cta" style="background:var(--sol);color:var(--navy);">
+        <span class="btn-cta-icon">📊</span> Dashboard PEM
+      </a>
     </div>
   </div>
 
