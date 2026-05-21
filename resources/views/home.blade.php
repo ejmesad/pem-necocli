@@ -151,7 +151,7 @@ button{font-family:inherit;cursor:pointer;}
   <div class="allies-inner">
 
     {{-- Árbol PEM (identidad propia) --}}
-    <a href="{{ url('/') }}" class="ally-logo pem-tree" aria-label="PEM Necoclí">
+    <a href="{{ route('quienes-somos') }}" class="ally-logo pem-tree" aria-label="PEM Necoclí">
       <img src="{{ asset('images/logo-pem-simbolo.svg') }}" alt="PEM Necoclí">
     </a>
 
