@@ -130,8 +130,25 @@ button{font-family:inherit;cursor:pointer;}
 .sb-link:hover{color:var(--caribe-d);}
 
 /* Footer */
-.footer{background:#FDF5EE;padding:24px;border-top:1px solid #F0D9C0;margin-top:40px;}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;}
+.footer{background:var(--navy);color:rgba(255,255,255,.7);padding:48px 24px 24px;margin-top:40px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-cols{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+@media (max-width: 760px){.footer-cols{grid-template-columns:1fr;gap:24px;}}
+.footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.footer-brand img{height:44px;width:auto;}
+.footer-brand-text strong{color:#fff;font-weight:800;font-size:16px;display:block;}
+.footer-brand-text small{font-size:12px;color:var(--sol);font-weight:700;letter-spacing:.04em;}
+.footer p.footer-desc{font-size:13px;line-height:1.6;color:rgba(255,255,255,.6);}
+.footer h4{color:#fff;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;}
+.footer ul{list-style:none;padding:0;margin:0;}
+.footer ul li{margin-bottom:8px;font-size:13px;color:rgba(255,255,255,.6);}
+.footer ul a{color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;}
+.footer ul a:hover{color:var(--sol);}
+.footer-allies{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);margin-bottom:20px;}
+.footer-allies img{height:32px;width:auto;background:#fff;padding:4px 8px;border-radius:6px;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.4);flex-wrap:wrap;gap:8px;}
+.footer-bottom-brand{display:flex;align-items:center;gap:8px;}
+.footer-bottom-brand img{height:20px;width:auto;opacity:.85;}
 
 @media (max-width: 640px){
   .main-title h1{font-size:24px;}
@@ -180,7 +197,7 @@ button{font-family:inherit;cursor:pointer;}
     <h2 class="hero-h1">Construimos juntos el <em>futuro educativo</em> del territorio</h2>
     <div class="hero-cta">
       <a href="#nuestra-voz" class="btn-cta btn-cta-green">
-        <span class="btn-cta-icon">💬</span> Participar ahora
+        <span class="btn-cta-icon">🎙️</span> Participar ahora
       </a>
       <a href="{{ url('/nuestras-huellas') }}" class="btn-cta btn-cta-blue">
         <span class="btn-cta-icon">📋</span> Ver proyectos
@@ -258,7 +275,7 @@ button{font-family:inherit;cursor:pointer;}
 
     <h3 class="section-title">Novedades del PEM</h3>
     <div class="news-card">
-      <div class="news-icon">🏫</div>
+      <div class="news-icon">📰</div>
       <div class="news-body">
         <div class="news-title">Sesión Nº3 aprobó nuevas metas de cobertura rural</div>
         <div class="news-meta">15 mar 2026 · Acta disponible</div>
@@ -282,29 +299,48 @@ button{font-family:inherit;cursor:pointer;}
 {{-- FOOTER --}}
 <footer class="footer">
   <div class="footer-inner">
-    <a href="{{ url('/') }}" class="ally-logo pem-tree">
-      <img src="{{ asset('images/logo-pem-simbolo.svg') }}" alt="PEM Necoclí">
-    </a>
-    <div class="ally-sep"></div>
-    <div class="ally-logo logo-municipio">
-      <div class="logo-municipio-shield">MUNI<br>NECO</div>
-      <div class="logo-municipio-text">
-        <div class="logo-municipio-t1">MUNICIPIO DE</div>
-        <div class="logo-municipio-t2">NECOCLÍ</div>
+    <div class="footer-cols">
+      <div>
+        <div class="footer-brand">
+          <img src="{{ asset('images/logo-pem-simbolo.svg') }}" alt="PEM Necoclí">
+          <div class="footer-brand-text">
+            <strong>PEM Necoclí</strong>
+            <small>MESA MUNICIPAL DE EDUCACIÓN</small>
+          </div>
+        </div>
+        <p class="footer-desc">El Plan Educativo Municipal es la apuesta colectiva por una educación pertinente, equitativa y con identidad territorial para Necoclí.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="{{ url('/nuestras-huellas') }}">Nuestras huellas</a></li>
+          <li><a href="{{ route('quienes-somos') }}">Acerca del PEM</a></li>
+          <li><a href="{{ route('colegios.index') }}">Instituciones</a></li>
+          <li><a href="{{ route('dashboard-pem') }}">Dashboard PEM</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>Necoclí, Antioquia</li>
+          <li>contacto@pem-necocli.co</li>
+          <li>PEM Necoclí</li>
+        </ul>
       </div>
     </div>
-    <div class="ally-logo logo-necocli">
-      <div class="logo-necocli-letters">
-        <span class="l1">N</span><span class="l2">e</span><span class="l3">C</span><span class="l4">o</span><span class="l5">c</span><span class="l6">l</span><span class="l7">í</span>
-      </div>
-      <div class="logo-necocli-sub">Tú perteneces aquí</div>
+
+    <div class="footer-allies">
+      <img src="{{ asset('images/logonecsf.png') }}" alt="Necoclí tú perteneces aquí">
+      <img src="{{ asset('images/logoescnecf.png') }}" alt="Municipio de Necoclí">
+      <img src="{{ asset('images/logo_fgs.svg') }}" alt="Fundación Grupo Social">
     </div>
-    <div class="ally-logo logo-fgs">
-      <div class="logo-fgs-hex">F</div>
-      <div class="logo-fgs-text">
-        <div class="logo-fgs-t1">FUNDACIÓN</div>
-        <div class="logo-fgs-t2">GRUPO SOCIAL</div>
-      </div>
+
+    <div class="footer-bottom">
+      <span class="footer-bottom-brand">
+        <img src="{{ asset('images/logo-pem-simbolo.svg') }}" alt="PEM">
+        © {{ date('Y') }} PEM Necoclí. Construido con cariño en el Urabá.
+      </span>
+      <span>v0.1 — beta</span>
     </div>
   </div>
 </footer>

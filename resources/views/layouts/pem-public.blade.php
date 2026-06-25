@@ -37,7 +37,7 @@
         .pem-footer-cols{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px;margin-bottom:32px;}
         @media (max-width: 760px){.pem-footer-cols{grid-template-columns:1fr;gap:24px;}}
         .pem-footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
-        .pem-footer-brand img{height:60px;width:auto;border-radius:12px;}
+        .pem-footer-brand img{height:44px;width:auto;}
         .pem-footer-brand-text strong{color:#fff;font-family:var(--pem-font-display);font-weight:800;font-size:16px;display:block;}
         .pem-footer-brand-text small{font-size:12px;color:var(--pem-sol);font-weight:700;letter-spacing:.04em;}
         .pem-footer p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.6);}
@@ -47,6 +47,8 @@
         .pem-footer ul a{color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;}
         .pem-footer ul a:hover{color:var(--pem-sol);}
         .pem-footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.4);flex-wrap:wrap;gap:8px;}
+        .pem-footer-bottom-brand{display:flex;align-items:center;gap:8px;}
+        .pem-footer-bottom-brand img{height:20px;width:auto;opacity:.85;}
         .container-pem{max-width:1200px;margin:0 auto;padding:0 24px;}
         .section-pad{padding:64px 0;}
     </style>
@@ -62,7 +64,7 @@
 
 <header class="pem-nav">
     <div class="pem-nav-inner">
-        
+
         <a href="{{ url('/') }}" class="pem-nav-brand">
             <img src="{{ asset('images/logo-pem-horizontal.svg') }}" alt="PEM Necoclí">
             <img src="{{ asset('images/logoescnecf.png') }}" alt="Escudo Necoclí" style="height:40px;width:auto;">
@@ -95,7 +97,7 @@
         <div class="pem-footer-cols">
             <div>
                 <div class="pem-footer-brand">
-                    <img src="{{ asset('images/logo-pem-simbolo.svg') }}" alt="">
+                    <img src="{{ asset('images/logo-pem-simbolo.svg') }}" alt="PEM Necoclí">
                     <div class="pem-footer-brand-text">
                         <strong>PEM Necoclí</strong>
                         <small>MESA MUNICIPAL DE EDUCACIÓN</small>
@@ -122,7 +124,10 @@
             </div>
         </div>
         <div class="pem-footer-bottom">
-            <span>© {{ date('Y') }} PEM Necoclí. Construido con cariño en el Urabá.</span>
+            <span class="pem-footer-bottom-brand">
+                <img src="{{ asset('images/logo-pem-simbolo.svg') }}" alt="PEM">
+                © {{ date('Y') }} PEM Necoclí. Construido con cariño en el Urabá.
+            </span>
             <span>v0.1 — beta</span>
         </div>
     </div>
