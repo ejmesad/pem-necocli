@@ -655,7 +655,7 @@ function actionHTML(p,a,i){
       <div class="inp"><label>¿Formalizado?</label>
         <span class="toggle formal"><button class="${st.formal?'on-si':''}" onclick="setA('${k}','formal',true)" ${st.aplica?'':'disabled'}>Sí</button><button class="${!st.formal?'on-no':''}" onclick="setA('${k}','formal',false)" ${st.aplica?'':'disabled'}>No</button></span>
       </div>
-      <div class="inp"><label>Evidencia / observación</label><textarea oninput="setA('${k}','ev',this.value)" placeholder="Acto administrativo, soporte, lo observado…">${st.ev||''}</textarea></div>
+      <div class="inp"><label>Evidencia / observación</label><textarea oninput="rec.actions['${k}'].ev=this.value;save()" placeholder="Acto administrativo, soporte, lo observado…">${st.ev||''}</textarea></div>
     </div>
     ${r.capped? `<div class="cap-flag">⚠ Cumple la meta pero no está formalizada — tope 80%. Formalízala para alcanzar Óptimo.</div>`:''}
   </div>`;
