@@ -30,7 +30,8 @@ button{font-family:inherit;cursor:pointer}
 .topbar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:3px solid var(--gold)}
 .topbar-in{max-width:1200px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:12px}
-.seal{width:42px;height:42px;border-radius:11px;background:radial-gradient(circle at 30% 25%,var(--gold) 0%,#b8862a 100%);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Fraunces';font-weight:700;font-size:20px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
+.seal{width:42px;height:42px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.seal img{width:100%;height:100%;object-fit:contain}
 .brand h1{font-size:16px;font-weight:600;letter-spacing:.2px;line-height:1.1}
 .brand .sub{font-size:11px;color:#9db4cf;letter-spacing:1.4px;text-transform:uppercase}
 .tabs{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
@@ -183,6 +184,27 @@ tbody tr:hover{background:#fafbfc}
 .trace-meta.show{display:block}
 .trace-meta b{color:var(--navy)}
 
+/* ---------- FOOTER INSTITUCIONAL ---------- */
+.site-footer{background:var(--navy);color:rgba(255,255,255,.7);padding:48px 24px 24px;margin-top:48px}
+.site-footer-inner{max-width:1200px;margin:0 auto}
+.site-footer-cols{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px;margin-bottom:32px}
+@media (max-width: 760px){.site-footer-cols{grid-template-columns:1fr;gap:24px}}
+.site-footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.site-footer-brand img{height:44px;width:auto}
+.site-footer-brand-text strong{color:#fff;font-family:'Fraunces';font-weight:700;font-size:16px;display:block}
+.site-footer-brand-text small{font-size:12px;color:var(--gold);font-weight:700;letter-spacing:.04em}
+.site-footer p.sf-desc{font-size:13px;line-height:1.6;color:rgba(255,255,255,.6)}
+.site-footer h4{color:#fff;font-family:'Fraunces';font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.site-footer ul{list-style:none;padding:0;margin:0}
+.site-footer ul li{margin-bottom:8px;font-size:13px;color:rgba(255,255,255,.6)}
+.site-footer ul a{color:rgba(255,255,255,.6);font-size:13px;text-decoration:none}
+.site-footer ul a:hover{color:var(--gold)}
+.site-footer-allies{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);margin-bottom:20px}
+.site-footer-allies img{height:32px;width:auto;background:#fff;padding:4px 8px;border-radius:6px}
+.site-footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.4);flex-wrap:wrap;gap:8px}
+.site-footer-bottom-brand{display:flex;align-items:center;gap:8px}
+.site-footer-bottom-brand img{height:20px;width:auto;opacity:.85}
+
 @media(max-width:680px){
   .scorebar{position:static}
   .inputs{grid-template-columns:1fr 1fr}
@@ -203,7 +225,7 @@ tbody tr:hover{background:#fafbfc}
 <div class="topbar">
   <div class="topbar-in">
     <div class="brand">
-      <div class="seal">N</div>
+      <div class="seal"><img src="images/logo-pem-simbolo.svg" alt="PEM"></div>
       <div>
         <h1>Ficha de Diagnóstico Institucional — PEM</h1>
         <div class="sub">Necoclí · 2025 – 2035 · Mesa de Educación Municipal</div>
@@ -947,5 +969,54 @@ function init(){
 }
 document.addEventListener('DOMContentLoaded',init);
 </script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-cols">
+      <div>
+        <div class="site-footer-brand">
+          <img src="images/logo-pem-simbolo.svg" alt="PEM Necoclí">
+          <div class="site-footer-brand-text">
+            <strong>PEM Necoclí</strong>
+            <small>MESA MUNICIPAL DE EDUCACIÓN</small>
+          </div>
+        </div>
+        <p class="sf-desc">El Plan Educativo Municipal es la apuesta colectiva por una educación pertinente, equitativa y con identidad territorial para Necoclí.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="/nuestras-huellas">Nuestras huellas</a></li>
+          <li><a href="/quienes-somos">Acerca del PEM</a></li>
+          <li><a href="/colegios">Instituciones</a></li>
+          <li><a href="/dashboard-pem">Dashboard PEM</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>Necoclí, Antioquia</li>
+          <li>contacto@pem-necocli.co</li>
+          <li>PEM Necoclí</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer-allies">
+      <img src="images/logonecsf.png" alt="Necoclí tú perteneces aquí">
+      <img src="images/logoescnecf.png" alt="Municipio de Necoclí">
+      <img src="images/logo_fgs.svg" alt="Fundación Grupo Social">
+    </div>
+
+    <div class="site-footer-bottom">
+      <span class="site-footer-bottom-brand">
+        <img src="images/logo-pem-simbolo.svg" alt="PEM">
+        © 2026 PEM Necoclí. Construido con cariño en el Urabá.
+      </span>
+      <span>v0.1 — beta</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
