@@ -1,0 +1,152 @@
+meta:
+  id: pem
+  name: Plataforma de Educación Municipal (PEM)
+  version: 0.2.2
+  status: draft
+  language: es
+  created_at: '2026-04-26'
+  updated_at: '2026-06-25'
+  code_audit_note: >
+    Deploy exitoso a pemnecocli.com. Sesión 2026-05-21: 13 bugs cerrados,
+    deploy a producción, páginas quiénes somos y dashboard PEM publicadas.
+    Sesión 2026-06-25: Ficha de Diagnóstico Institucional (instrumento
+    standalone, sin login) ampliada con módulo de compromiso firmado:
+    identidad declarada (nombre + cargo) y carga de PDF/imagen con
+    trazabilidad embebida en el JSON exportado. Pendiente decidir si
+    se conecta a backend Laravel o se mantiene 100% client-side.
+
+produccion:
+  url: https://pemnecocli.com
+  estado: LIVE
+  deploy_date: '2026-05-21'
+  servidor: Hostinger Business (PowerEdge R440, CloudLinux 8)
+  ssh: ssh -p 65002 u121329331@191.96.56.8
+  db: u121329331_pemnecocli
+  db_user: u121329331_mesamunicipal
+  app_path: ~/domains/pemnecocli.com/pem-necocli
+  public_html: symlink a pem-necocli/public
+  repo: https://github.com/ejmesad/pem-necocli.git
+
+paginas_live:
+  - GET /                  → home (hero + huellas + KPIs)
+  - GET /colegios          → 19 IER en grid con filtros
+  - GET /colegios/{slug}   → ficha individual con sedes y proyectos
+  - GET /nuestras-huellas  → listado de huellas
+  - GET /quienes-somos     → página PEM 2025-2035 (estático)
+  - GET /dashboard-pem     → dashboard seguimiento (estático Chart.js)
+
+instrumentos_standalone:
+  ficha_diagnostico_institucional:
+    archivo: Ficha_Diagnostico_PEM_Necocli.html
+    descripcion: >
+      Instrumento de diagnóstico institucional (espejo del baremo Excel PEM)
+      para las 19 IE de Necoclí. Sin login. Persistencia en localStorage por
+      institución. Tabs: Ficha · Diagnóstico · Institucionalización ·
+      Hallazgos · Escalafón.
+    estado: actualizado_2026-06-25
+    hosting_sugerido: dynamizesas.com o pemnecocli.com (archivo estático)
+    funcionalidades:
+      - Llenado sin registro, autoguardado en localStorage por IE
+      - Exportar ficha (.json) / importar ficha (.json)
+      - Exportar fila (.csv) y escalafón comparativo (.csv)
+      - Imprimir / Guardar PDF (window.print con estilos @media print)
+      - "NUEVO: módulo Compromiso firmado (pestaña Hallazgos)"
+    compromiso_firmado:
+      tipo: identidad_declarada_sin_clave
+      campos: [nombre_completo, cargo (Rector/Coordinador/Coord. académico/Evaluador PEM/Otro), institucion]
+      archivo_adjunto: PDF o imagen (jpg/png), máx 8MB, codificado base64 dentro del JSON exportado
+      almacenamiento_actual: 100% client-side (localStorage + export JSON) — sin backend
+      trazabilidad: nombre + cargo + IE + archivo + timestamp, mostrados en pantalla y embebidos en el JSON
+      limitacion_conocida: >
+        No verifica que la persona sea realmente quien dice ser (no hay clave
+        ni cuenta). Es trazabilidad documental, no de seguridad informática.
+        Mitigación actual: la Mesa reconoce manualmente al rector/coordinador
+        real de cada IE al recibir el archivo.
+      evolucion_futura: >
+        Cuando OI-M1F6 (Google Sign-In) esté implementado, este módulo puede
+        migrar a Opción B (clave institucional) o a cuentas reales por rol.
+
+open_items:
+  - { id: OI-028, h: 1,   prioridad: alta,   desc: "Corregir URLs imágenes BD (acentos vs sin acentos en carpetas)" }
+  - { id: OI-029, h: 1.5, prioridad: media,  desc: "Quiénes somos al layout PEM (nav + footer consistentes)" }
+  - { id: OI-026, h: 4,   prioridad: media,  desc: "Vistas públicas proyectos.index y proyectos.show + ProjectController" }
+  - { id: OI-023, h: 2,   prioridad: media,  desc: "Completar students_count, teachers_count, founded_year por IER" }
+  - { id: OI-030, h: 8,   prioridad: alta,   desc: "Dashboard conectado a BD — KPIs y gráficas con datos reales" }
+  - { id: OI-031, h: 3,   prioridad: baja,   desc: "Mapa Leaflet en sidebar de ficha colegio" }
+  - { id: OI-024, h: 0.5, prioridad: baja,   desc: "GPS faltante 2 sedes IER Indígena José Elías Suárez" }
+  - { id: OI-M1F6, h: 4,  prioridad: media,  desc: "Google Sign-In con Socialite + GoogleAuthController" }
+  - { id: OI-M1F7, h: 5,  prioridad: baja,   desc: "2FA con Fortify (TOTP)" }
+  - { id: OI-M2,  h: 16,  prioridad: baja,   desc: "CMS básico — gestión de contenidos desde panel" }
+  - { id: OI-M4,  h: 12,  prioridad: baja,   desc: "Sondeos ciudadanos — encuestas de percepción" }
+  - { id: OI-M8,  h: 12,  prioridad: alta,   desc: "Dashboard indicadores real conectado a BD" }
+  - { id: OI-032, h: 1,   prioridad: media,  desc: "Subir Ficha de Diagnóstico actualizada a hosting (dynamizesas.com o pemnecocli.com)" }
+  - { id: OI-033, h: 6,   prioridad: media,  desc: "Endpoint backend para recibir compromiso firmado (reemplaza almacenamiento solo-local)" }
+  - { id: OI-034, h: 3,   prioridad: baja,   desc: "Trazabilidad reforzada: clave institucional por IE para compromiso firmado (Opción B)" }
+
+estimado:
+  horas_critico_alto: 25    # OI-028, 029, 026, 023, 030, M8
+  horas_total: 79           # +OI-032, OI-033, OI-034
+  ritmo: 3 horas/día
+  semanas_critico_alto: 8   # ~2 meses
+  semanas_todo: 26          # ~6.5 meses
+
+plan_semana_a_semana:
+  semana_1: "OI-028 (1h) + OI-029 (1.5h) + OI-026 inicio (0.5h)"
+  semana_2: "OI-026 completar (3.5h) + OI-023 (2h)"
+  semana_3: "OI-030 fase 1 (3h)"
+  semana_4: "OI-030 fase 2 (5h)"
+  semana_5_6: "OI-M1F6 (4h) + OI-031 (3h)"
+  semana_7_8: "OI-M1F7 (5h) + OI-M8 inicio (3h)"
+
+roadmap:
+  - version: 0.2.2
+    status: done
+    fecha: '2026-06-25'
+    items:
+      - "Ficha de Diagnóstico Institucional: módulo Compromiso firmado"
+      - "Trazabilidad por identidad declarada (nombre + cargo + IE)"
+      - "Carga de PDF/imagen firmada embebida en JSON exportado"
+
+  - version: 0.2.1
+    status: done
+    fecha: '2026-05-21'
+    items:
+      - Deploy a pemnecocli.com (LIVE)
+      - ProjectSeeder 26 proyectos en producción
+      - Página quiénes somos
+      - Dashboard PEM estático
+      - Nav logo → quiénes somos
+      - Botón Dashboard en hero home
+
+  - version: 0.3.0
+    status: planned
+    estimado: 4 semanas (3h/día)
+    items:
+      - OI-028 URLs imágenes
+      - OI-029 Quiénes somos al layout PEM
+      - OI-026 Vistas proyectos
+      - OI-023 Datos IER
+      - OI-030 Dashboard real
+
+  - version: 0.4.0
+    status: planned
+    estimado: 4 semanas
+    items:
+      - Google Sign-In
+      - Mapa Leaflet
+      - 2FA
+
+  - version: 0.5.0
+    status: planned
+    estimado: 6 semanas
+    items:
+      - Dashboard indicadores real
+      - CMS básico
+
+  - version: 1.0.0
+    status: planned
+    estimado: 4 semanas
+    items:
+      - Sondeos ciudadanos
+      - QA completo
+      - Documentación usuario final

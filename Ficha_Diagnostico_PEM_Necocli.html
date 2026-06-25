@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ficha de Diagnóstico Institucional · PEM Necoclí 2025–2035</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#14233b; --navy2:#1e3a5f; --navy3:#27496d;
+  --gold:#e0b13c; --gold-soft:#f3e2b0;
+  --paper:#f4f5f7; --card:#ffffff; --ink:#1d2733; --muted:#667085; --line:#e4e7ec;
+  --inc:#c0392b; --des:#dd8a18; --con:#2c6e9b; --opt:#2d6a4f;
+  --inc-bg:#fbeceb; --des-bg:#fcf3e2; --con-bg:#e9f1f7; --opt-bg:#e8f1ec;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.10);
+  --shadow-lg:0 8px 24px rgba(16,24,40,.12);
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.45;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.display{font-family:'Fraunces',Georgia,serif}
+a{color:var(--navy2)}
+button{font-family:inherit;cursor:pointer}
+::selection{background:var(--gold-soft)}
+
+/* ---------- TOP BAR ---------- */
+.topbar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:3px solid var(--gold)}
+.topbar-in{max-width:1200px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.seal{width:42px;height:42px;border-radius:11px;background:radial-gradient(circle at 30% 25%,var(--gold) 0%,#b8862a 100%);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Fraunces';font-weight:700;font-size:20px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
+.brand h1{font-size:16px;font-weight:600;letter-spacing:.2px;line-height:1.1}
+.brand .sub{font-size:11px;color:#9db4cf;letter-spacing:1.4px;text-transform:uppercase}
+.tabs{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.tab{background:transparent;border:0;color:#acc1da;padding:8px 14px;border-radius:9px;font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:7px;transition:.15s}
+.tab:hover{background:rgba(255,255,255,.08);color:#fff}
+.tab.active{background:var(--gold);color:var(--navy)}
+.tab .dot{font-size:10px}
+
+/* ---------- LAYOUT ---------- */
+.wrap{max-width:1200px;margin:0 auto;padding:22px}
+.page{display:none}.page.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.card-pad{padding:22px}
+.section-eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+.section-eyebrow.navy{color:var(--navy3)}
+h2.title{font-size:24px;font-weight:600;color:var(--navy);margin:2px 0 4px}
+.lead{color:var(--muted);font-size:14px;max-width:70ch}
+
+/* ---------- IDENTIFICACIÓN ---------- */
+.id-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.field input,.field select,.field textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:9px;font-size:13.5px;font-family:inherit;color:var(--ink);background:#fff;transition:.15s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--navy2);box-shadow:0 0 0 3px rgba(30,58,95,.12)}
+.field .ro{background:#f7f8fa;color:var(--navy2);font-weight:600}
+
+/* ---------- SCORE STRIP ---------- */
+.scorebar{position:sticky;top:64px;z-index:40;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.gscore{display:flex;align-items:center;gap:14px}
+.gscore .num{font-family:'Fraunces';font-size:40px;font-weight:600;line-height:1}
+.gscore .meta{font-size:12px;color:var(--muted)}
+.lvl-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700}
+.linechips{display:flex;gap:10px;margin-left:auto;flex-wrap:wrap}
+.linechip{border:1px solid var(--line);border-radius:11px;padding:8px 12px;min-width:120px}
+.linechip .lab{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
+.linechip .val{font-family:'Fraunces';font-size:22px;font-weight:600}
+.mini-bar{height:6px;border-radius:4px;background:#eef0f3;overflow:hidden;margin-top:5px}
+.mini-bar>span{display:block;height:100%;border-radius:4px;transition:width .5s ease}
+
+/* ---------- PROJECT BLOCK ---------- */
+.line-head{display:flex;align-items:center;gap:12px;margin:26px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+.line-head .lnum{font-family:'Fraunces';font-weight:700;font-size:13px;color:#fff;background:var(--navy2);width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.line-head h3{font-size:18px;font-weight:600;color:var(--navy)}
+.line-head .lpct{margin-left:auto;font-family:'Fraunces';font-size:18px;font-weight:600}
+
+.proj{margin-bottom:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.proj-head{display:flex;align-items:center;gap:12px;padding:13px 16px;cursor:pointer;background:#fbfcfd;transition:.15s}
+.proj-head:hover{background:#f5f7fa}
+.proj-head .pid{font-family:'Fraunces';font-weight:700;font-size:13px;color:var(--navy2);background:var(--gold-soft);border-radius:7px;padding:3px 9px}
+.proj-head .pname{font-weight:600;font-size:14.5px;flex:1}
+.proj-head .ppct{font-family:'Fraunces';font-size:17px;font-weight:600;min-width:54px;text-align:right}
+.proj-head .chev{color:var(--muted);transition:.2s;font-size:13px}
+.proj.open .chev{transform:rotate(90deg)}
+.proj-body{display:none;padding:6px 16px 16px}
+.proj.open .proj-body{display:block}
+
+.act{padding:14px 0;border-top:1px dashed var(--line)}
+.act:first-child{border-top:0}
+.act-top{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.act-name{flex:1;min-width:200px}
+.act-name .an{font-weight:600;font-size:14px}
+.act-name .ao{font-size:12px;color:var(--muted);margin-top:2px}
+.act-score{display:flex;align-items:center;gap:8px}
+.act-pct{font-family:'Fraunces';font-weight:600;font-size:17px;min-width:48px;text-align:right}
+
+.inputs{display:grid;grid-template-columns:auto 96px 96px auto 1fr;gap:10px 14px;align-items:end;margin-top:12px}
+.inp label{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);margin-bottom:4px}
+.inp input[type=number]{width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:8px;font-size:13.5px;text-align:right}
+.inp input:focus{outline:none;border-color:var(--navy2);box-shadow:0 0 0 3px rgba(30,58,95,.1)}
+.inp textarea{width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:8px;font-size:13px;resize:vertical;min-height:38px;font-family:inherit}
+
+/* toggle sí/no */
+.toggle{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.toggle button{border:0;background:#fff;color:var(--muted);padding:7px 12px;font-size:12.5px;font-weight:700}
+.toggle button.on-si{background:var(--opt);color:#fff}
+.toggle button.on-no{background:#eceef1;color:var(--ink)}
+.toggle.formal button.on-si{background:var(--navy2);color:#fff}
+
+.cap-flag{font-size:11.5px;font-weight:700;color:var(--des);background:var(--des-bg);border:1px solid #f0d9a8;padding:3px 9px;border-radius:7px;display:inline-flex;gap:6px;align-items:center;margin-top:8px}
+.na-flag{font-size:11px;font-weight:700;color:var(--muted);background:#f1f2f4;padding:2px 8px;border-radius:6px}
+
+/* ---------- BUTTONS ---------- */
+.btn{border:1px solid transparent;border-radius:10px;padding:9px 16px;font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:.15s}
+.btn-primary{background:var(--navy2);color:#fff}.btn-primary:hover{background:var(--navy3)}
+.btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover{filter:brightness(1.05)}
+.btn-ghost{background:#fff;border-color:var(--line);color:var(--navy2)}.btn-ghost:hover{background:#f6f8fa}
+.btn-sm{padding:7px 12px;font-size:12.5px}
+.actionsbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* ---------- INSTITUCIONALIZACIÓN ---------- */
+.inst-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+@media(max-width:760px){.inst-hero{grid-template-columns:1fr}}
+.inst-left{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:26px}
+.inst-left .idx{font-family:'Fraunces';font-size:54px;font-weight:600;line-height:1}
+.ceiling{position:relative;background:#fff;padding:26px}
+.ceiling .bar{position:relative;height:230px;width:100%;max-width:160px;margin:10px auto 0;background:linear-gradient(180deg,var(--opt-bg),#fff);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.ceiling .fill{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,var(--con),var(--navy2));transition:height .6s ease}
+.ceiling .capline{position:absolute;left:0;right:0;top:20%;border-top:2px dashed var(--des)}
+.ceiling .caplabel{position:absolute;right:6px;top:calc(20% - 18px);font-size:10px;font-weight:700;color:var(--des)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:18px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+.kpi .n{font-family:'Fraunces';font-size:26px;font-weight:600}
+.kpi .l{font-size:11px;color:var(--muted);font-weight:600;margin-top:2px}
+
+/* ---------- TABLE ---------- */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{background:#f7f8fa;text-align:left;padding:11px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap}
+tbody td{padding:10px 12px;border-bottom:1px solid #eef0f3}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#fafbfc}
+.rank-medal{font-family:'Fraunces';font-weight:700;font-size:15px;width:26px;display:inline-block;text-align:center}
+.barcell{display:flex;align-items:center;gap:8px;min-width:140px}
+.barcell .track{flex:1;height:8px;border-radius:5px;background:#eef0f3;overflow:hidden}
+.barcell .trackfill{height:100%;border-radius:5px}
+
+/* hallazgos */
+.hz{display:grid;grid-template-columns:auto 70px 1fr;gap:10px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line)}
+.hz .hzname{font-weight:600;font-size:13px}
+.compromiso-row{display:grid;grid-template-columns:2fr 1fr 130px auto;gap:8px;margin-bottom:8px}
+.compromiso-row input{padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px}
+
+/* toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:12px 20px;border-radius:11px;font-size:13.5px;font-weight:600;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:.3s;z-index:200;display:flex;gap:9px;align-items:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.empty-state{text-align:center;padding:50px 20px;color:var(--muted)}
+.empty-state .ic{font-size:40px;margin-bottom:10px;opacity:.5}
+
+.helpbox{background:var(--con-bg);border:1px solid #cfe0ee;border-radius:11px;padding:13px 15px;font-size:13px;color:#1c4763;display:flex;gap:11px}
+.helpbox b{color:var(--navy)}
+
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:8px}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.swatch{width:12px;height:12px;border-radius:3px}
+
+/* ---------- COMPROMISO FIRMADO / UPLOAD ---------- */
+.signbox{border:2px dashed var(--line);border-radius:var(--radius);padding:22px;background:#fbfcfd;text-align:center;transition:.15s}
+.signbox.dragover{border-color:var(--gold);background:var(--gold-soft)}
+.signbox .ic-up{font-size:28px;margin-bottom:6px}
+.signbox p{font-size:13px;color:var(--muted);margin:4px 0}
+.signbox small{font-size:11.5px;color:#98a2b3}
+.sign-file-row{display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.filechip{display:inline-flex;align-items:center;gap:8px;background:var(--con-bg);border:1px solid #cfe0ee;color:#1c4763;padding:7px 12px;border-radius:9px;font-size:13px;font-weight:600;max-width:100%}
+.filechip .fn{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.filechip .x{cursor:pointer;color:var(--inc);font-weight:700;margin-left:4px}
+.signed-badge{display:inline-flex;align-items:center;gap:7px;background:var(--opt-bg);color:var(--opt);border:1px solid #c7e2d3;padding:5px 11px;border-radius:8px;font-size:12.5px;font-weight:700}
+.trace-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:16px}
+.trace-meta{font-size:12px;color:var(--muted);background:#f7f8fa;border:1px solid var(--line);border-radius:9px;padding:10px 13px;margin-top:10px;display:none}
+.trace-meta.show{display:block}
+.trace-meta b{color:var(--navy)}
+
+@media(max-width:680px){
+  .scorebar{position:static}
+  .inputs{grid-template-columns:1fr 1fr}
+  .gscore .num{font-size:32px}
+  .compromiso-row{grid-template-columns:1fr}
+}
+@media print{
+  .topbar,.tabs,.actionsbar,.scorebar .linechips,.no-print{display:none!important}
+  .page{display:block!important}
+  .proj-body{display:block!important}
+  body{background:#fff}
+  .card,.proj{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+
+<body>
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <div class="seal">N</div>
+      <div>
+        <h1>Ficha de Diagnóstico Institucional — PEM</h1>
+        <div class="sub">Necoclí · 2025 – 2035 · Mesa de Educación Municipal</div>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button class="tab active" data-tab="ficha"><span class="dot">●</span> Ficha</button>
+      <button class="tab" data-tab="diag"><span class="dot">●</span> Diagnóstico</button>
+      <button class="tab" data-tab="inst"><span class="dot">●</span> Institucionalización</button>
+      <button class="tab" data-tab="hall"><span class="dot">●</span> Hallazgos</button>
+      <button class="tab" data-tab="rank"><span class="dot">●</span> Escalafón</button>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB FICHA ============ -->
+  <section class="page active" id="tab-ficha">
+    <div class="card card-pad" style="margin-bottom:18px">
+      <div class="section-eyebrow navy">Identificación de la visita</div>
+      <h2 class="title">¿Qué establecimiento estamos diagnosticando?</h2>
+      <p class="lead">Selecciona la institución. Los datos base se cargan automáticamente y puedes ajustarlos. Todo se guarda en este equipo a medida que registras; cada institución conserva su propia ficha.</p>
+      <div class="id-grid" style="margin-top:18px">
+        <div class="field" style="grid-column:span 2">
+          <label>Establecimiento educativo</label>
+          <select id="f_ie"></select>
+        </div>
+        <div class="field"><label>Código DANE</label><input id="f_dane" placeholder="Opcional"></div>
+        <div class="field"><label>Zona</label><input id="f_zone" class="ro" readonly></div>
+        <div class="field"><label>N.º de sedes</label><input id="f_seats" class="ro" readonly></div>
+        <div class="field"><label>Matrícula total</label><input id="f_students" class="ro" readonly></div>
+        <div class="field"><label>Rector / Director</label><input id="f_rector" placeholder="Nombre"></div>
+        <div class="field"><label>Fecha de la visita</label><input id="f_date" type="date"></div>
+        <div class="field">
+          <label>Corte (semestre)</label>
+          <select id="f_corte"><option>2025-I</option><option>2025-II</option><option>2026-I</option><option>2026-II</option></select>
+        </div>
+        <div class="field" style="grid-column:span 2"><label>Evaluador(es)</label><input id="f_eval" placeholder="Quién facilita la jornada"></div>
+      </div>
+      <div class="helpbox" style="margin-top:18px">
+        <span>ℹ️</span>
+        <div><b>Cómo se diligencia.</b> En la pestaña <b>Diagnóstico</b>, para cada acción ajusta la <b>Meta</b> a la realidad de esta IE, registra el <b>Logro</b> observado, marca si está <b>Formalizado</b> (acto administrativo, PEI/SIEE, resolución, acuerdo) y si <b>Aplica</b>. El porcentaje y el nivel se calculan solos. Lo marcado <b>No aplica</b> queda como N/A y no afecta el promedio.</div>
+      </div>
+    </div>
+
+    <div class="actionsbar no-print">
+      <button class="btn btn-gold" id="btnGoDiag">Comenzar diagnóstico →</button>
+      <button class="btn btn-ghost btn-sm" id="btnExportJSON">⤓ Guardar ficha (.json)</button>
+      <button class="btn btn-ghost btn-sm" id="btnImportJSON">⤒ Cargar ficha (.json)</button>
+      <button class="btn btn-ghost btn-sm" id="btnExportCSV">⤓ Exportar fila (.csv)</button>
+      <button class="btn btn-ghost btn-sm" id="btnPrint">🖨 Imprimir / PDF</button>
+      <button class="btn btn-ghost btn-sm" id="btnClear" style="margin-left:auto;color:var(--inc);border-color:#f0c7c2">↺ Limpiar esta IE</button>
+      <input type="file" id="fileJSON" accept=".json" hidden>
+    </div>
+  </section>
+
+  <!-- ============ TAB DIAGNÓSTICO ============ -->
+  <section class="page" id="tab-diag">
+    <div class="scorebar">
+      <div class="gscore">
+        <div>
+          <div class="num" id="g_num">—</div>
+          <div class="meta" id="g_meta">Avance global de la IE</div>
+        </div>
+        <span class="lvl-pill" id="g_lvl">Sin datos</span>
+      </div>
+      <div class="linechips" id="lineChips"></div>
+    </div>
+    <div class="legend no-print" style="margin:-6px 2px 14px">
+      <span><i class="swatch" style="background:var(--inc)"></i> Incipiente (0–20%)</span>
+      <span><i class="swatch" style="background:var(--des)"></i> En desarrollo (21–50%)</span>
+      <span><i class="swatch" style="background:var(--con)"></i> Consolidado (51–80%)</span>
+      <span><i class="swatch" style="background:var(--opt)"></i> Óptimo (81–100%)</span>
+    </div>
+    <div id="diagBody"></div>
+  </section>
+
+  <!-- ============ TAB INSTITUCIONALIZACIÓN ============ -->
+  <section class="page" id="tab-inst">
+    <div class="section-eyebrow navy">El corazón del diagnóstico</div>
+    <h2 class="title">¿Qué tan institucionalizado está el PEM en esta IE?</h2>
+    <p class="lead" style="margin-bottom:18px">Una práctica puede estar funcionando y aun así no estar <b>institucionalizada</b>. Por eso una acción que cumple su meta pero no está formalizada llega como máximo a <b>Consolidado (80%)</b>: solo la formalización (acto administrativo, PEI/SIEE, acuerdo del consejo, resolución) abre el paso a <b>Óptimo</b>.</p>
+    <div class="inst-hero">
+      <div class="inst-left">
+        <div class="section-eyebrow">Índice de institucionalización</div>
+        <div class="idx" id="inst_idx">—</div>
+        <div style="font-size:13px;color:#c7d6e8;margin-top:6px" id="inst_idx_txt">Acciones formalizadas sobre acciones con avance.</div>
+        <div class="kpi-row" id="inst_kpis" style="margin-top:22px"></div>
+      </div>
+      <div class="ceiling">
+        <div class="section-eyebrow navy" style="text-align:center">Techo de formalización</div>
+        <div class="bar">
+          <div class="capline"></div><div class="caplabel">80%</div>
+          <div class="fill" id="inst_fill" style="height:0%"></div>
+        </div>
+        <div style="text-align:center;font-size:12px;color:var(--muted);margin-top:10px">Avance global vs. el techo que impone no formalizar</div>
+      </div>
+    </div>
+    <div class="card card-pad" style="margin-top:18px">
+      <h3 style="font-size:16px;color:var(--navy);margin-bottom:4px">Acciones listas para institucionalizar</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Cumplen el 90% o más de la meta, pero aún no están formalizadas. Formalizarlas es la vía más rápida para subir el escalafón.</p>
+      <div id="inst_capped"></div>
+    </div>
+  </section>
+
+  <!-- ============ TAB HALLAZGOS ============ -->
+  <section class="page" id="tab-hall">
+    <div class="section-eyebrow navy">Cierre de la jornada</div>
+    <h2 class="title">Hallazgos por proyecto y compromisos de mejora</h2>
+    <p class="lead" style="margin-bottom:16px">Registra una observación por proyecto y los compromisos acordados con el rector.</p>
+    <div class="card card-pad" style="margin-bottom:18px">
+      <div id="hallList"></div>
+    </div>
+    <div class="card card-pad">
+      <h3 style="font-size:16px;color:var(--navy);margin-bottom:12px">Compromisos acordados</h3>
+      <div class="compromiso-row" style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase">
+        <div>Compromiso</div><div>Responsable</div><div>Fecha límite</div><div></div>
+      </div>
+      <div id="compromisos"></div>
+      <button class="btn btn-ghost btn-sm no-print" id="btnAddCompromiso" style="margin-top:8px">＋ Agregar compromiso</button>
+      <div class="id-grid" style="margin-top:20px">
+        <div class="field"><label>Próxima visita de seguimiento</label><input id="f_next" type="date"></div>
+        <div class="field"><label>Firma del rector / director</label><input id="f_sign_r" placeholder="Nombre y firma"></div>
+        <div class="field"><label>Firma del evaluador(es)</label><input id="f_sign_e" placeholder="Nombre y firma"></div>
+      </div>
+    </div>
+
+    <!-- ============ COMPROMISO FIRMADO (TRAZABILIDAD) ============ -->
+    <div class="card card-pad no-print" style="margin-top:18px" id="signSection">
+      <div class="section-eyebrow navy">Cierre formal</div>
+      <h3 style="font-size:16px;color:var(--navy);margin:2px 0 4px">Compromiso firmado</h3>
+      <p class="lead" style="margin-bottom:16px">Una vez impresa, firmada y escaneada la ficha, súbela aquí. Quien la suba debe declarar su identidad y cargo: esto queda registrado junto con el archivo como respaldo de trazabilidad del compromiso de trabajo.</p>
+
+      <div class="trace-grid">
+        <div class="field">
+          <label>Nombre completo de quien sube</label>
+          <input id="sg_name" placeholder="Nombre y apellidos">
+        </div>
+        <div class="field">
+          <label>Cargo</label>
+          <select id="sg_role">
+            <option value="">— Selecciona —</option>
+            <option value="Rector">Rector</option>
+            <option value="Coordinador">Coordinador</option>
+            <option value="Coordinador académico">Coordinador académico</option>
+            <option value="Evaluador PEM">Evaluador PEM</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Institución</label>
+          <input id="sg_ie_display" class="ro" readonly placeholder="Se toma de la pestaña Ficha">
+        </div>
+      </div>
+
+      <div class="signbox no-print" id="signDrop">
+        <div class="ic-up">📎</div>
+        <p><b>Arrastra aquí el PDF o foto de la ficha firmada</b>, o haz clic para seleccionar.</p>
+        <small>Formatos aceptados: PDF, JPG, PNG · máx. 8 MB</small>
+        <div class="sign-file-row" id="signFileRow" style="display:none"></div>
+        <input type="file" id="sg_file" accept=".pdf,.jpg,.jpeg,.png" hidden>
+      </div>
+
+      <div class="trace-meta" id="traceMeta"></div>
+
+      <div class="actionsbar no-print" style="margin-top:14px">
+        <button class="btn btn-primary" id="btnSaveSigned">✓ Registrar compromiso firmado</button>
+        <span id="signedBadgeHost"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB ESCALAFÓN ============ -->
+  <section class="page" id="tab-rank">
+    <div style="display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:16px">
+      <div>
+        <div class="section-eyebrow navy">Comparativo municipal</div>
+        <h2 class="title">Escalafón de instituciones de Necoclí</h2>
+        <p class="lead">Reúne todas las fichas diligenciadas en este equipo. Para incluir fichas de otros equipos, usa <b>Importar fichas</b>.</p>
+      </div>
+      <div class="actionsbar no-print" style="margin-left:auto">
+        <select id="rankZone" class="btn btn-ghost btn-sm" style="padding-right:30px"><option value="all">Todas las zonas</option><option value="Rural">Rural</option><option value="Urbana">Urbana</option></select>
+        <button class="btn btn-ghost btn-sm" id="btnImportMany">⤒ Importar fichas (.json)</button>
+        <button class="btn btn-gold btn-sm" id="btnExportRank">⤓ Exportar escalafón (.csv)</button>
+        <input type="file" id="fileMany" accept=".json" multiple hidden>
+      </div>
+    </div>
+    <div class="kpi-row" id="rankKpis" style="margin-bottom:18px"></div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>#</th><th>Institución</th><th>Zona</th><th>Equidad</th><th>Calidad</th><th>Pertinencia</th><th>Global</th><th>Nivel</th><th>Instituc.</th></tr></thead>
+      <tbody id="rankBody"></tbody>
+    </table></div>
+    <div class="card card-pad" style="margin-top:18px">
+      <h3 style="font-size:15px;color:var(--navy);margin-bottom:6px">Proyectos más rezagados del municipio</h3>
+      <p style="font-size:12.5px;color:var(--muted);margin-bottom:12px">Promedio de cada proyecto entre las IE diligenciadas. Útil para priorizar acciones municipales.</p>
+      <div id="rankProjects"></div>
+    </div>
+  </section>
+
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const APP = {"data": {"lines": {"L1": {"name": "Equidad y Trayectorias Completas", "short": "Equidad", "projs": ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8"]}, "L2": {"name": "Calidad con Innovación y Sostenibilidad", "short": "Calidad", "projs": ["P9", "P10", "P11", "P12", "P13", "P14"]}, "L3": {"name": "Identidad y Pertinencia Territorial", "short": "Pertinencia", "projs": ["P15", "P16", "P17", "P18", "P19", "P20"]}}, "projects": [{"id": "P1", "line": "L1", "name": "Tránsitos Seguros – Primera Infancia", "actions": [{"n": "Adecuación y dotación de espacios", "obs": "sedes de la IE con primera infancia adecuadas / total", "meta": 3.0, "aplica": true}, {"n": "Capacitación de docentes", "obs": "docentes de primera infancia de la IE capacitados / total", "meta": 5.0, "aplica": true}, {"n": "Formación a familias", "obs": "familias de la IE que participan / total focalizadas", "meta": 50.0, "aplica": true}, {"n": "Protocolos de seguridad y bienestar", "obs": "etapas (de 4): diseñar · socializar · implementar · evaluar", "meta": 4.0, "aplica": true}]}, {"id": "P2", "line": "L1", "name": "Centros de Recursos para la Inclusión", "actions": [{"n": "Espacios accesibles", "obs": "sedes de la IE accesibles / total sedes", "meta": 6.0, "aplica": true}, {"n": "TIC adaptativas y material braille/LSC", "obs": "sedes con dotación inclusiva / total sedes", "meta": 6.0, "aplica": true}, {"n": "Banco de ayudas técnicas", "obs": "etapas (de 4): crear · reglamentar · operar · hacer seguimiento", "meta": 4.0, "aplica": true}, {"n": "Formación de docentes en DUA", "obs": "docentes de la IE capacitados en DUA / total", "meta": 30.0, "aplica": true}]}, {"id": "P3", "line": "L1", "name": "Ruta de Cobertura Rural", "actions": [{"n": "Transporte escolar seguro", "obs": "rutas de la IE cubiertas con norma / rutas necesarias", "meta": 5.0, "aplica": true}, {"n": "Aulas multigrado equipadas", "obs": "aulas multigrado dotadas en la IE / total", "meta": 6.0, "aplica": true}, {"n": "Docentes itinerantes y tutorías", "obs": "sedes dispersas con esquema / total sedes dispersas", "meta": 6.0, "aplica": true}, {"n": "Modelos educativos flexibles", "obs": "sedes con modelo institucionalizado / total pertinentes", "meta": 6.0, "aplica": true}, {"n": "Alimentación escolar (PAE)", "obs": "estudiantes de la IE con PAE continuo / matrícula", "meta": 600.0, "aplica": true}]}, {"id": "P4", "line": "L1", "name": "Habilidades para la Vida", "actions": [{"n": "Módulos de proyecto de vida", "obs": "estudiantes con plan de vida / total focalizados", "meta": 120.0, "aplica": true}, {"n": "Educación financiera", "obs": "estudiantes con competencias financieras / total", "meta": 120.0, "aplica": true}, {"n": "Mentorías por egresados", "obs": "mentorías realizadas / meta de la IE", "meta": 10.0, "aplica": true}]}, {"id": "P5", "line": "L1", "name": "Puentes a la Educación Terciaria", "actions": [{"n": "Acompañamiento (inscripción, becas, pruebas)", "obs": "estudiantes de media acompañados / total media", "meta": 80.0, "aplica": true}, {"n": "Alianzas con IES y ETDH", "obs": "convenios que benefician a la IE / meta", "meta": 2.0, "aplica": true}, {"n": "Clubes de lectura crítica", "obs": "clubes activos en la IE / meta", "meta": 3.0, "aplica": true}]}, {"id": "P6", "line": "L1", "name": "Acompañamiento a Familias", "actions": [{"n": "Escuela de padres", "obs": "familias participantes / total familias de la IE", "meta": 200.0, "aplica": true}, {"n": "Atención psicosocial y jurídica", "obs": "etapas (de 4): definir servicio · disponer · atender demanda · hacer seguimiento", "meta": 4.0, "aplica": true}, {"n": "Biblioteca de recursos", "obs": "etapas (de 4): crear · catalogar · poner en uso · medir uso", "meta": 4.0, "aplica": true}]}, {"id": "P7", "line": "L1", "name": "Educación en Convivencia y Ética", "actions": [{"n": "Programa Aulas sin Violencia", "obs": "aulas de la IE que lo implementan / total aulas", "meta": 20.0, "aplica": true}, {"n": "Mediadores escolares", "obs": "mediadores formados y activos en la IE / meta", "meta": 6.0, "aplica": true}]}, {"id": "P8", "line": "L1", "name": "Voluntariado y Participación Comunitaria", "actions": [{"n": "Plataforma de voluntariado", "obs": "etapas (de 4): crear · vincular estudiantes · registrar horas · hacer seguimiento", "meta": 4.0, "aplica": true}, {"n": "Alianzas público-privadas", "obs": "alianzas activas de la IE / meta", "meta": 3.0, "aplica": true}, {"n": "Jornadas de servicio social", "obs": "jornadas realizadas / meta anual", "meta": 4.0, "aplica": true}, {"n": "Alfabetización", "obs": "estudiantes que participan / total focalizados", "meta": 50.0, "aplica": true}]}, {"id": "P9", "line": "L2", "name": "Plan de Mejora Continua", "actions": [{"n": "Sistema de datos y tablero", "obs": "etapas (de 4): diseñar · cargar datos · usar para decisiones · actualizar periódicamente", "meta": 4.0, "aplica": true}, {"n": "Simulacros tipo ICFES", "obs": "simulacros realizados / meta anual (4)", "meta": 4.0, "aplica": true}, {"n": "Planes de mejora por área", "obs": "acciones de mejora cerradas / total", "meta": 10.0, "aplica": true}]}, {"id": "P10", "line": "L2", "name": "Formación y Acompañamiento Docente", "actions": [{"n": "Diagnóstico de necesidades", "obs": "etapas (de 4): planear · aplicar · analizar · actualizar", "meta": 4.0, "aplica": true}, {"n": "Ciclos de formación", "obs": "horas de formación logradas / meta de horas", "meta": 40.0, "aplica": true}, {"n": "Comunidades de práctica", "obs": "docentes participantes / total docentes de la IE", "meta": 30.0, "aplica": true}, {"n": "Mentores en aula", "obs": "acompañamientos realizados / meta", "meta": 10.0, "aplica": true}, {"n": "Reconocimientos e incentivos", "obs": "etapas (de 4): reglamentar · aprobar · aplicar · sostener", "meta": 4.0, "aplica": true}]}, {"id": "P11", "line": "L2", "name": "Dotación TIC Integral", "actions": [{"n": "Kits de aula digital", "obs": "aulas de la IE equipadas / total aulas", "meta": 20.0, "aplica": true}, {"n": "Uso de plataforma LMS", "obs": "docentes de la IE usuarios / total docentes", "meta": 30.0, "aplica": true}, {"n": "Mantenimiento preventivo", "obs": "disponibilidad TIC observada (%) / meta 95%", "meta": 95.0, "aplica": true}]}, {"id": "P12", "line": "L2", "name": "Laboratorios STEAM", "actions": [{"n": "Laboratorios fijos", "obs": "laboratorios operativos en la IE / meta", "meta": 1.0, "aplica": true}, {"n": "Acceso a laboratorio móvil", "obs": "etapas (de 4): solicitado · recibido · con cronograma · uso recurrente", "meta": 4.0, "aplica": true}, {"n": "Clubes de robótica y ciencia", "obs": "clubes activos en la IE / meta", "meta": 2.0, "aplica": true}]}, {"id": "P13", "line": "L2", "name": "Infraestructura (Plan Maestro)", "actions": [{"n": "Diagnóstico de infraestructura", "obs": "sedes de la IE diagnosticadas / total sedes", "meta": 6.0, "aplica": true}, {"n": "Accesibilidad universal", "obs": "sedes conformes / total sedes", "meta": 6.0, "aplica": true}, {"n": "Gestión de recursos (SGP/Nación)", "obs": "etapas (de 4): gestionar · asignar recursos · ejecutar obras · entregar obras  (ámbito municipal)", "meta": 4.0, "aplica": false}]}, {"id": "P14", "line": "L2", "name": "Alianzas para la Sostenibilidad", "actions": [{"n": "Convenios con empresas y ONG", "obs": "convenios que benefician a la IE / meta  (ámbito municipal)", "meta": 2.0, "aplica": false}, {"n": "Energía solar / agua lluvia", "obs": "sistemas instalados en la IE / meta  (ámbito municipal)", "meta": 1.0, "aplica": false}, {"n": "Jornada extendida", "obs": "¿la IE tiene jornada extendida? (1 = sí)", "meta": 1.0, "aplica": true}]}, {"id": "P15", "line": "L3", "name": "Cátedra Municipal y Multiculturalidad", "actions": [{"n": "Aplicación de la cátedra", "obs": "¿la IE aplica la cátedra? (1 = sí, con docentes)", "meta": 1.0, "aplica": true}, {"n": "Materiales multilingües", "obs": "materiales disponibles en la IE / meta", "meta": 3.0, "aplica": true}, {"n": "Salidas pedagógicas", "obs": "salidas realizadas / meta anual", "meta": 4.0, "aplica": true}]}, {"id": "P16", "line": "L3", "name": "PEI Actualizado y Currículo Contextualizado", "actions": [{"n": "Matriz de pertinencia", "obs": "¿la IE tiene matriz de pertinencia? (1 = sí)", "meta": 1.0, "aplica": true}, {"n": "Secuencias diferenciadas", "obs": "asignaturas ajustadas / total asignaturas", "meta": 20.0, "aplica": true}, {"n": "Evaluación por competencias", "obs": "¿la IE la aplica? (1 = sí)", "meta": 1.0, "aplica": true}, {"n": "PEI actualizado y SIEE concertado", "obs": "¿PEI actualizado y alineado al PEM? (1 = sí)", "meta": 1.0, "aplica": true}]}, {"id": "P17", "line": "L3", "name": "Aprendizaje en Aulas Abiertas", "actions": [{"n": "Huertas escolares y viveros", "obs": "huertas/viveros activos en la IE / meta", "meta": 3.0, "aplica": true}, {"n": "Clases en espacios naturales", "obs": "sesiones realizadas / meta anual", "meta": 6.0, "aplica": true}, {"n": "Salidas pedagógicas", "obs": "salidas realizadas / meta anual", "meta": 4.0, "aplica": true}]}, {"id": "P18", "line": "L3", "name": "Gobiernos Escolares y Gestión Pedagógica", "actions": [{"n": "Capacitación de representantes", "obs": "representantes capacitados / total", "meta": 20.0, "aplica": true}, {"n": "Plan anual de participación", "obs": "etapas (de 4): formular · aprobar · ejecutar · evaluar", "meta": 4.0, "aplica": true}, {"n": "Observatorio estudiantil", "obs": "etapas (de 4): crear · operar · generar propuestas · implementar propuestas", "meta": 4.0, "aplica": true}]}, {"id": "P19", "line": "L3", "name": "Clubes de Lectura y Pensamiento Crítico", "actions": [{"n": "Clubes de lectura temáticos", "obs": "clubes activos en la IE / meta", "meta": 3.0, "aplica": true}, {"n": "Guías de lectura y análisis crítico", "obs": "guías en uso / meta", "meta": 4.0, "aplica": true}, {"n": "Debate y producción escrita", "obs": "actividades realizadas / meta anual", "meta": 6.0, "aplica": true}, {"n": "Evaluaciones formativas y sumativas", "obs": "etapas (de 4): diseñar · aplicar · analizar · mejorar", "meta": 4.0, "aplica": true}]}, {"id": "P20", "line": "L3", "name": "Proyectos Productivos Escolares y Rurales", "actions": [{"n": "Huertas, piscicultura, agroemprendimientos", "obs": "proyectos en ejecución / meta", "meta": 3.0, "aplica": true}, {"n": "Feria de ideas de negocio", "obs": "etapas (de 4): planear · realizar · ampliar participación · sostener anual", "meta": 4.0, "aplica": true}, {"n": "Articulación con el SENA", "obs": "proyectos articulados con SENA / meta", "meta": 2.0, "aplica": true}]}]}, "insts": [{"id": "IE01", "name": "CER Bobal La Playa", "students": 342, "seats": 4, "zone": "Rural"}, {"id": "IE02", "name": "CER El Paraíso", "students": 145, "seats": 5, "zone": "Rural"}, {"id": "IE03", "name": "CER Melilto Arriba", "students": 161, "seats": 3, "zone": "Rural"}, {"id": "IE04", "name": "CER Vale Pavas", "students": 166, "seats": 3, "zone": "Rural"}, {"id": "IE05", "name": "IER Caribia", "students": 631, "seats": 7, "zone": "Rural"}, {"id": "IE06", "name": "IE Antonio Roldán Betancur", "students": 1550, "seats": 3, "zone": "Urbana"}, {"id": "IE07", "name": "IER El Totumo", "students": 1539, "seats": 8, "zone": "Rural"}, {"id": "IE08", "name": "IER Melilto", "students": 636, "seats": 6, "zone": "Rural"}, {"id": "IE09", "name": "IER Mulaticos Piedrecitas", "students": 1196, "seats": 26, "zone": "Rural"}, {"id": "IE10", "name": "IER Mulatos", "students": 683, "seats": 6, "zone": "Rural"}, {"id": "IE11", "name": "IER San Sebastián de Urabá", "students": 548, "seats": 6, "zone": "Rural"}, {"id": "IE12", "name": "IER Tulapita", "students": 434, "seats": 8, "zone": "Rural"}, {"id": "IE13", "name": "IER Zapata", "students": 924, "seats": 6, "zone": "Rural"}, {"id": "IE14", "name": "IER Indígena José Elías Suárez", "students": 496, "seats": 6, "zone": "Rural"}, {"id": "IE15", "name": "IE Eduardo Espitia Romero", "students": 1624, "seats": 4, "zone": "Urbana"}, {"id": "IE16", "name": "IER La Comarca", "students": 513, "seats": 7, "zone": "Rural"}, {"id": "IE17", "name": "IER Las Changas", "students": 492, "seats": 8, "zone": "Rural"}, {"id": "IE18", "name": "IER Mello Villavicencio", "students": 412, "seats": 6, "zone": "Rural"}, {"id": "IE19", "name": "IER Pueblo Nuevo", "students": 592, "seats": 5, "zone": "Rural"}]};
+</script>
+<script>
+/* ============================================================
+   PEM Necoclí · Ficha de Diagnóstico Institucional
+   Lógica de cálculo idéntica al instrumento Excel (baremo PEM).
+   ============================================================ */
+const LINES = APP.data.lines;          // {L1:{name,short,projs[]}, ...}
+const PROJECTS = APP.data.projects;    // [{id,line,name,actions:[{n,obs,meta,aplica}]}]
+const INSTS = APP.insts;
+const LINE_ORDER = ['L1','L2','L3'];
+const LINE_COLOR = {L1:'#1e3a5f', L2:'#2d6a4f', L3:'#b8862a'};
+const KEY = 'pemnec_v1:';
+
+/* ---- estado en memoria ---- */
+let cur = null;            // id IE seleccionada
+let rec = null;            // registro activo
+
+function blankRecord(ie){
+  const r = {ie:ie.id, ident:{dane:'',rector:'',date:'',corte:'2025-I',eval:'',
+             next:'',sign_r:'',sign_e:''},
+             actions:{}, hall:{}, compromisos:[], signed:null};
+  PROJECTS.forEach(p=>p.actions.forEach((a,i)=>{
+    r.actions[p.id+'_'+i] = {aplica:a.aplica, meta:a.meta, logro:'', formal:false, ev:''};
+  }));
+  return r;
+}
+
+/* ============ NÚCLEO DE CÁLCULO (espejo del Excel) ============ */
+function floorTenth(x){ return Math.floor(x*10)/10; }
+function ratioJ(meta, logro){
+  if(logro===''||logro==null||isNaN(logro)) return null;
+  if(meta===''||meta==null||isNaN(meta)||Number(meta)===0) return null;
+  return Math.min(Number(logro)/Number(meta), 1);
+}
+// Devuelve {h: 0..1 | null, na, empty, capped}
+function actionScore(st){
+  if(!st.aplica) return {h:null, na:true, empty:false, capped:false};
+  const J = ratioJ(st.meta, st.logro);
+  if(J===null) return {h:null, na:false, empty:true, capped:false};
+  let h, capped=false;
+  if(J>=1 && st.formal) h=1;
+  else if(floorTenth(J)>=0.9 && !st.formal){ h=0.8; capped=true; }
+  else if(Number(st.logro)>0 && floorTenth(J)<0.1) h=0.1;
+  else h=floorTenth(J);
+  return {h, na:false, empty:false, capped};
+}
+// % de un proyecto: promedio de h (acciones aplicables con dato). null si N/A.
+function projectScore(p){
+  let s=0,n=0;
+  p.actions.forEach((a,i)=>{
+    const r = actionScore(rec.actions[p.id+'_'+i]);
+    if(r.h!==null){ s+=r.h; n++; }
+  });
+  return n? s/n : null;
+}
+function lineScore(lid){
+  let s=0,n=0;
+  PROJECTS.filter(p=>p.line===lid).forEach(p=>{
+    const v=projectScore(p); if(v!==null){ s+=v; n++; }
+  });
+  return n? s/n : null;
+}
+function globalScore(){
+  let s=0,n=0;
+  LINE_ORDER.forEach(l=>{ const v=lineScore(l); if(v!==null){ s+=v; n++; } });
+  return n? s/n : null;
+}
+
+/* ============ BAREMO ============ */
+function baremo(v){ // v en 0..1 o null
+  if(v===null) return {lvl:'Sin datos', cls:'', color:'#98a2b3', bg:'#f1f2f4'};
+  const p=v;
+  if(p<=0.2) return {lvl:'Incipiente',   color:'var(--inc)', bg:'var(--inc-bg)'};
+  if(p<=0.5) return {lvl:'En desarrollo',color:'var(--des)', bg:'var(--des-bg)'};
+  if(p<=0.8) return {lvl:'Consolidado',  color:'var(--con)', bg:'var(--con-bg)'};
+  return       {lvl:'Óptimo',            color:'var(--opt)', bg:'var(--opt-bg)'};
+}
+const pct = v => v===null? '—' : Math.round(v*100)+'%';
+
+/* ============ INSTITUCIONALIZACIÓN ============ */
+function instStats(){
+  let aplicables=0, conAvance=0, formalizadas=0, capped=0;
+  const cappedList=[];
+  PROJECTS.forEach(p=>p.actions.forEach((a,i)=>{
+    const st=rec.actions[p.id+'_'+i];
+    if(!st.aplica) return;
+    aplicables++;
+    const r=actionScore(st);
+    if(r.h!==null && r.h>0) conAvance++;
+    if(st.formal && Number(st.logro)>0) formalizadas++;
+    if(r.capped){ capped++; cappedList.push({p, a, idx:i, st}); }
+  }));
+  const idx = conAvance? formalizadas/conAvance : null;
+  return {aplicables, conAvance, formalizadas, capped, cappedList, idx};
+}
+
+/* ============ PERSISTENCIA ============ */
+function save(){
+  if(!rec) return;
+  try{ localStorage.setItem(KEY+rec.ie, JSON.stringify(rec)); }catch(e){}
+}
+function loadRecord(ieid){
+  const ie=INSTS.find(i=>i.id===ieid);
+  try{
+    const raw=localStorage.getItem(KEY+ieid);
+    if(raw){ rec=JSON.parse(raw); migrate(rec); }
+    else rec=blankRecord(ie);
+  }catch(e){ rec=blankRecord(ie); }
+  cur=ieid;
+}
+function migrate(r){ // asegurar todas las claves de acción
+  PROJECTS.forEach(p=>p.actions.forEach((a,i)=>{
+    const k=p.id+'_'+i;
+    if(!r.actions[k]) r.actions[k]={aplica:a.aplica,meta:a.meta,logro:'',formal:false,ev:''};
+  }));
+  if(!r.hall) r.hall={}; if(!r.compromisos) r.compromisos=[];
+  if(r.signed===undefined) r.signed=null;
+}
+function allRecords(){
+  const out=[];
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);
+    if(k && k.startsWith(KEY)){
+      try{ const r=JSON.parse(localStorage.getItem(k)); migrate(r); out.push(r); }catch(e){}
+    }
+  }
+  return out;
+}
+
+/* ============ RENDER: FICHA ============ */
+function fillIESelect(){
+  const sel=document.getElementById('f_ie');
+  sel.innerHTML='<option value="">— Selecciona una institución —</option>'+
+    INSTS.map(i=>`<option value="${i.id}">${i.name} · ${i.zone}</option>`).join('');
+}
+function renderIdent(){
+  const ie=INSTS.find(i=>i.id===cur);
+  document.getElementById('f_ie').value = cur||'';
+  document.getElementById('f_zone').value = ie? ie.zone : '';
+  document.getElementById('f_seats').value = ie? ie.seats : '';
+  document.getElementById('f_students').value = ie? ie.students.toLocaleString('es-CO') : '';
+  if(!rec) return;
+  document.getElementById('f_dane').value = rec.ident.dane||'';
+  document.getElementById('f_rector').value = rec.ident.rector||'';
+  document.getElementById('f_date').value = rec.ident.date||'';
+  document.getElementById('f_corte').value = rec.ident.corte||'2025-I';
+  document.getElementById('f_eval').value = rec.ident.eval||'';
+  document.getElementById('f_next').value = rec.ident.next||'';
+  document.getElementById('f_sign_r').value = rec.ident.sign_r||'';
+  document.getElementById('f_sign_e').value = rec.ident.sign_e||'';
+}
+function bindIdent(){
+  const map={f_dane:'dane',f_rector:'rector',f_date:'date',f_corte:'corte',f_eval:'eval',
+             f_next:'next',f_sign_r:'sign_r',f_sign_e:'sign_e'};
+  Object.entries(map).forEach(([id,key])=>{
+    document.getElementById(id).addEventListener('input',e=>{ if(rec){rec.ident[key]=e.target.value; save();} });
+  });
+}
+
+/* ============ RENDER: DIAGNÓSTICO ============ */
+function renderScorebar(){
+  const g=globalScore(), b=baremo(g);
+  const num=document.getElementById('g_num');
+  num.textContent = pct(g);
+  num.style.color = b.color;
+  const pill=document.getElementById('g_lvl');
+  pill.textContent=b.lvl; pill.style.color=b.color; pill.style.background=b.bg;
+  const ie=INSTS.find(i=>i.id===cur);
+  document.getElementById('g_meta').textContent = ie? ('Avance global · '+ie.name) : 'Avance global de la IE';
+  document.getElementById('lineChips').innerHTML = LINE_ORDER.map(l=>{
+    const v=lineScore(l), bb=baremo(v);
+    return `<div class="linechip"><div class="lab">L${l.slice(1)} · ${LINES[l].short}</div>
+      <div class="val" style="color:${bb.color}">${pct(v)}</div>
+      <div class="mini-bar"><span style="width:${v?Math.round(v*100):0}%;background:${bb.color}"></span></div></div>`;
+  }).join('');
+}
+function renderDiag(){
+  const host=document.getElementById('diagBody');
+  if(!rec){ host.innerHTML=emptyFicha(); return; }
+  let html='';
+  LINE_ORDER.forEach(lid=>{
+    const lv=lineScore(lid), lb=baremo(lv);
+    html+=`<div class="line-head"><div class="lnum">L${lid.slice(1)}</div>
+      <h3>${LINES[lid].name}</h3>
+      <div class="lpct" style="color:${lb.color}">${pct(lv)} · ${lb.lvl}</div></div>`;
+    PROJECTS.filter(p=>p.line===lid).forEach(p=>{
+      const pv=projectScore(p), pb=baremo(pv);
+      html+=`<div class="proj" id="proj-${p.id}">
+        <div class="proj-head" onclick="toggleProj('${p.id}')">
+          <span class="pid">${p.id}</span>
+          <span class="pname">${p.name}</span>
+          <span class="ppct" style="color:${pb.color}">${pct(pv)}</span>
+          <span class="lvl-pill" style="color:${pb.color};background:${pb.bg}">${pb.lvl}</span>
+          <span class="chev">▶</span>
+        </div>
+        <div class="proj-body">${p.actions.map((a,i)=>actionHTML(p,a,i)).join('')}</div>
+      </div>`;
+    });
+  });
+  host.innerHTML=html;
+}
+function actionHTML(p,a,i){
+  const k=p.id+'_'+i, st=rec.actions[k], r=actionScore(st);
+  const b = r.na? {lvl:'No aplica',color:'var(--muted)',bg:'#f1f2f4'}
+                : r.empty? {lvl:'Sin registrar',color:'#98a2b3',bg:'#f6f7f9'}
+                : baremo(r.h);
+  const pctTxt = r.na? 'N/A' : r.empty? '—' : Math.round(r.h*100)+'%';
+  return `<div class="act" id="act-${k}">
+    <div class="act-top">
+      <div class="act-name"><div class="an">${a.n}</div><div class="ao">${a.obs}</div></div>
+      <div class="act-score">
+        <span class="lvl-pill" style="color:${b.color};background:${b.bg}">${b.lvl}</span>
+        <span class="act-pct" style="color:${b.color}">${pctTxt}</span>
+      </div>
+    </div>
+    <div class="inputs">
+      <div class="inp"><label>¿Aplica?</label>
+        <span class="toggle"><button class="${st.aplica?'on-si':''}" onclick="setA('${k}','aplica',true)">Sí</button><button class="${!st.aplica?'on-no':''}" onclick="setA('${k}','aplica',false)">No</button></span>
+      </div>
+      <div class="inp"><label>Meta</label><input type="number" min="0" step="any" value="${st.meta===''?'':st.meta}" ${st.aplica?'':'disabled'} oninput="setNum('${k}','meta',this.value)"></div>
+      <div class="inp"><label>Logro</label><input type="number" min="0" step="any" value="${st.logro===''?'':st.logro}" ${st.aplica?'':'disabled'} oninput="setNum('${k}','logro',this.value)"></div>
+      <div class="inp"><label>¿Formalizado?</label>
+        <span class="toggle formal"><button class="${st.formal?'on-si':''}" onclick="setA('${k}','formal',true)" ${st.aplica?'':'disabled'}>Sí</button><button class="${!st.formal?'on-no':''}" onclick="setA('${k}','formal',false)" ${st.aplica?'':'disabled'}>No</button></span>
+      </div>
+      <div class="inp"><label>Evidencia / observación</label><textarea oninput="setA('${k}','ev',this.value)" placeholder="Acto administrativo, soporte, lo observado…">${st.ev||''}</textarea></div>
+    </div>
+    ${r.capped? `<div class="cap-flag">⚠ Cumple la meta pero no está formalizada — tope 80%. Formalízala para alcanzar Óptimo.</div>`:''}
+  </div>`;
+}
+/* edición */
+function setA(k,field,val){
+  rec.actions[k][field]=val;
+  if(field==='aplica' && !val){ /* mantiene datos pero queda N/A */ }
+  refreshAction(k); renderScorebar(); save();
+}
+function setNum(k,field,val){
+  rec.actions[k][field] = val===''? '' : Number(val);
+  refreshAction(k); renderScorebar(); save();
+}
+function refreshAction(k){
+  const p=PROJECTS.find(p=>k.startsWith(p.id+'_'));
+  const i=Number(k.split('_').pop());
+  const el=document.getElementById('act-'+k);
+  if(el){ const tmp=document.createElement('div'); tmp.innerHTML=actionHTML(p,p.actions[i],i);
+    el.replaceWith(tmp.firstElementChild); }
+  // actualizar encabezados de proyecto y línea sin re-render total
+  const pv=projectScore(p), pb=baremo(pv);
+  const head=document.querySelector(`#proj-${p.id} .proj-head`);
+  if(head){ head.querySelector('.ppct').textContent=pct(pv); head.querySelector('.ppct').style.color=pb.color;
+    const pill=head.querySelector('.lvl-pill'); pill.textContent=pb.lvl; pill.style.color=pb.color; pill.style.background=pb.bg; }
+  const lv=lineScore(p.line), lb=baremo(lv);
+  document.querySelectorAll('.line-head').forEach(h=>{
+    if(h.querySelector('.lnum').textContent==='L'+p.line.slice(1))
+      h.querySelector('.lpct').innerHTML=`${pct(lv)} · ${lb.lvl}`, h.querySelector('.lpct').style.color=lb.color;
+  });
+}
+function toggleProj(id){ document.getElementById('proj-'+id).classList.toggle('open'); }
+function emptyFicha(){ return `<div class="empty-state"><div class="ic">🏫</div><p>Selecciona una institución en la pestaña <b>Ficha</b> para comenzar.</p></div>`; }
+
+/* ============ RENDER: INSTITUCIONALIZACIÓN ============ */
+function renderInst(){
+  if(!rec){ document.getElementById('inst_idx').textContent='—'; document.getElementById('inst_capped').innerHTML=emptyFicha(); return; }
+  const s=instStats(), g=globalScore();
+  document.getElementById('inst_idx').textContent = s.idx===null?'—':Math.round(s.idx*100)+'%';
+  document.getElementById('inst_idx_txt').textContent =
+    s.idx===null? 'Aún no hay acciones con avance registrado.'
+    : `${s.formalizadas} de ${s.conAvance} acciones con avance están formalizadas.`;
+  document.getElementById('inst_kpis').innerHTML = [
+    ['Acciones aplicables', s.aplicables, '#fff'],
+    ['Con avance', s.conAvance, '#fff'],
+    ['Formalizadas', s.formalizadas, '#7fe0a9'],
+    ['En techo 80%', s.capped, '#f4cf8a'],
+  ].map(([l,n,c])=>`<div class="kpi" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.15)">
+      <div class="n" style="color:${c}">${n}</div><div class="l" style="color:#c7d6e8">${l}</div></div>`).join('');
+  const fillPctVal = g===null?0:Math.round(g*100);
+  document.getElementById('inst_fill').style.height = fillPctVal+'%';
+  // listado de acciones en techo
+  const host=document.getElementById('inst_capped');
+  if(!s.cappedList.length){ host.innerHTML=`<div style="color:var(--muted);font-size:13px;padding:8px 0">No hay acciones en el techo de formalización por ahora.</div>`; return; }
+  host.innerHTML = s.cappedList.map(c=>`
+    <div class="hz" style="grid-template-columns:auto 1fr auto">
+      <span class="pid" style="background:var(--gold-soft);font-family:'Fraunces';font-weight:700;font-size:12px;padding:3px 9px;border-radius:7px">${c.p.id}</span>
+      <div><div class="hzname">${c.a.n}</div><div style="font-size:12px;color:var(--muted)">${c.p.name}</div></div>
+      <button class="btn btn-gold btn-sm no-print" onclick="formalizeNow('${c.p.id}_${c.idx}')">Marcar formalizada</button>
+    </div>`).join('');
+}
+function formalizeNow(k){ rec.actions[k].formal=true; save(); renderAll(); toast('Acción marcada como formalizada'); }
+
+/* ============ RENDER: HALLAZGOS ============ */
+function renderHall(){
+  if(!rec){ document.getElementById('hallList').innerHTML=emptyFicha(); return; }
+  document.getElementById('hallList').innerHTML = PROJECTS.map(p=>{
+    const pv=projectScore(p), pb=baremo(pv);
+    return `<div class="hz">
+      <span class="pid" style="background:var(--gold-soft);font-family:'Fraunces';font-weight:700;font-size:12px;padding:3px 9px;border-radius:7px">${p.id}</span>
+      <span class="lvl-pill" style="color:${pb.color};background:${pb.bg};justify-content:center">${pct(pv)}</span>
+      <input style="padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px"
+        placeholder="Hallazgo / observación de ${p.name}" value="${(rec.hall[p.id]||'').replace(/"/g,'&quot;')}"
+        oninput="rec.hall['${p.id}']=this.value;save()">
+    </div>`;
+  }).join('');
+  renderCompromisos();
+  renderSign();
+}
+function renderCompromisos(){
+  const host=document.getElementById('compromisos');
+  if(!rec.compromisos.length) rec.compromisos.push({c:'',r:'',f:''});
+  host.innerHTML = rec.compromisos.map((c,i)=>`
+    <div class="compromiso-row">
+      <input placeholder="Compromiso" value="${(c.c||'').replace(/"/g,'&quot;')}" oninput="rec.compromisos[${i}].c=this.value;save()">
+      <input placeholder="Responsable" value="${(c.r||'').replace(/"/g,'&quot;')}" oninput="rec.compromisos[${i}].r=this.value;save()">
+      <input type="date" value="${c.f||''}" oninput="rec.compromisos[${i}].f=this.value;save()">
+      <button class="btn btn-ghost btn-sm no-print" onclick="rec.compromisos.splice(${i},1);save();renderCompromisos()">✕</button>
+    </div>`).join('');
+}
+
+/* ============ COMPROMISO FIRMADO (TRAZABILIDAD) ============ */
+let pendingFile=null; // {name,type,size,dataUrl} aún no guardado en rec hasta confirmar
+function renderSign(){
+  if(!rec) return;
+  const ie=INSTS.find(i=>i.id===cur);
+  document.getElementById('sg_ie_display').value = ie? (ie.name+' · '+ie.zone) : '';
+  document.getElementById('sg_name').value = rec.signed? rec.signed.name : '';
+  document.getElementById('sg_role').value = rec.signed? rec.signed.role : '';
+  pendingFile=null;
+  document.getElementById('signFileRow').style.display='none';
+  document.getElementById('signFileRow').innerHTML='';
+  const badgeHost=document.getElementById('signedBadgeHost');
+  const meta=document.getElementById('traceMeta');
+  if(rec.signed && rec.signed.file){
+    badgeHost.innerHTML = `<span class="signed-badge">✓ Compromiso firmado registrado</span>`;
+    meta.classList.add('show');
+    meta.innerHTML = `<b>Registrado por:</b> ${rec.signed.name} — ${rec.signed.role} ·
+      <b>Institución:</b> ${ie?ie.name:rec.ie} ·
+      <b>Archivo:</b> ${rec.signed.file.name} ·
+      <b>Fecha de registro:</b> ${new Date(rec.signed.ts).toLocaleString('es-CO')}`;
+    document.getElementById('signFileRow').style.display='flex';
+    document.getElementById('signFileRow').innerHTML =
+      `<span class="filechip">📄 <span class="fn">${rec.signed.file.name}</span></span>
+       <a class="btn btn-ghost btn-sm" href="${rec.signed.file.dataUrl}" download="${rec.signed.file.name}">⤓ Descargar</a>
+       <button class="btn btn-ghost btn-sm" onclick="clearSigned()" style="color:var(--inc)">✕ Quitar y reemplazar</button>`;
+  } else {
+    badgeHost.innerHTML='';
+    meta.classList.remove('show'); meta.innerHTML='';
+  }
+}
+function handleSignFile(file){
+  if(!file) return;
+  const okType=/pdf|jpe?g|png/i.test(file.type)||/\.(pdf|jpe?g|png)$/i.test(file.name);
+  if(!okType){ toast('Formato no permitido — usa PDF, JPG o PNG'); return; }
+  if(file.size > 8*1024*1024){ toast('El archivo supera 8 MB'); return; }
+  const reader=new FileReader();
+  reader.onload=()=>{
+    pendingFile={name:file.name, type:file.type, size:file.size, dataUrl:reader.result};
+    const row=document.getElementById('signFileRow');
+    row.style.display='flex';
+    row.innerHTML=`<span class="filechip">📎 <span class="fn">${file.name}</span></span>
+      <button class="btn btn-ghost btn-sm" onclick="pendingFile=null;renderSign();" style="color:var(--inc)">✕ Quitar</button>`;
+    toast('Archivo listo — completa los datos y registra');
+  };
+  reader.readAsDataURL(file);
+}
+function clearSigned(){
+  if(!rec) return;
+  if(confirm('¿Quitar el compromiso firmado registrado? Podrás subir uno nuevo.')){
+    rec.signed=null; save(); renderSign(); toast('Compromiso firmado eliminado');
+  }
+}
+function saveSigned(){
+  if(!rec){ toast('Selecciona una institución primero'); return; }
+  const name=document.getElementById('sg_name').value.trim();
+  const role=document.getElementById('sg_role').value;
+  const fileToUse = pendingFile || (rec.signed? rec.signed.file : null);
+  if(!name){ toast('Falta el nombre de quien sube el archivo'); return; }
+  if(!role){ toast('Falta seleccionar el cargo'); return; }
+  if(!fileToUse){ toast('Adjunta el PDF o imagen de la ficha firmada'); return; }
+  rec.signed = {name, role, ie:cur, file:fileToUse, ts:Date.now()};
+  pendingFile=null;
+  save(); renderSign();
+  toast('Compromiso firmado registrado con trazabilidad');
+}
+
+/* ============ RENDER: ESCALAFÓN ============ */
+function summarize(r){
+  const prev=rec; rec=r;  // reusar motor sobre r
+  const g=globalScore();
+  const lines={}; LINE_ORDER.forEach(l=>lines[l]=lineScore(l));
+  const pr={}; PROJECTS.forEach(p=>pr[p.id]=projectScore(p));
+  const s=instStats();
+  rec=prev;
+  const ie=INSTS.find(i=>i.id===r.ie)||{name:r.ie,zone:'—'};
+  return {id:r.ie,name:ie.name,zone:ie.zone,g,lines,pr,inst:s.idx};
+}
+function renderRank(){
+  const zone=document.getElementById('rankZone').value;
+  let rows=allRecords().map(summarize).filter(x=>x.g!==null);
+  if(zone!=='all') rows=rows.filter(r=>r.zone===zone);
+  rows.sort((a,b)=>(b.g||0)-(a.g||0));
+  // KPIs
+  const avg = rows.length? rows.reduce((s,r)=>s+r.g,0)/rows.length : null;
+  const top = rows[0], low = rows[rows.length-1];
+  document.getElementById('rankKpis').innerHTML=[
+    ['IE diligenciadas', rows.length, 'var(--navy)'],
+    ['Promedio municipal', avg===null?'—':Math.round(avg*100)+'%', 'var(--navy2)'],
+    ['Mejor IE', top?top.name.split(' ').slice(0,2).join(' '):'—', 'var(--opt)'],
+    ['Requiere apoyo', low?low.name.split(' ').slice(0,2).join(' '):'—', 'var(--inc)'],
+  ].map(([l,n,c])=>`<div class="kpi"><div class="n" style="color:${c};font-size:${String(n).length>6?'17px':'26px'}">${n}</div><div class="l">${l}</div></div>`).join('');
+  // tabla
+  const medal=i=>i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1);
+  document.getElementById('rankBody').innerHTML = rows.length? rows.map((r,i)=>{
+    const b=baremo(r.g);
+    const cell=v=>{const bb=baremo(v);return `<div class="barcell"><div class="track"><div class="trackfill" style="width:${v?Math.round(v*100):0}%;background:${bb.color}"></div></div><span style="color:${bb.color};font-weight:600;min-width:36px">${pct(v)}</span></div>`;};
+    return `<tr>
+      <td><span class="rank-medal">${medal(i)}</span></td>
+      <td style="font-weight:600">${r.name}</td>
+      <td>${r.zone}</td>
+      <td>${cell(r.lines.L1)}</td><td>${cell(r.lines.L2)}</td><td>${cell(r.lines.L3)}</td>
+      <td><b style="color:${b.color};font-family:'Fraunces';font-size:15px">${pct(r.g)}</b></td>
+      <td><span class="lvl-pill" style="color:${b.color};background:${b.bg}">${b.lvl}</span></td>
+      <td style="color:var(--navy2);font-weight:600">${r.inst===null?'—':Math.round(r.inst*100)+'%'}</td>
+    </tr>`;
+  }).join('') : `<tr><td colspan="9"><div class="empty-state"><div class="ic">📊</div>Aún no hay fichas diligenciadas. Completa al menos una institución o importa fichas.</div></td></tr>`;
+  // proyectos rezagados
+  const projAvg=PROJECTS.map(p=>{
+    let s=0,n=0; rows.forEach(r=>{ if(r.pr[p.id]!==null){s+=r.pr[p.id];n++;} });
+    return {p, v:n?s/n:null};
+  }).filter(x=>x.v!==null).sort((a,b)=>a.v-b.v).slice(0,8);
+  document.getElementById('rankProjects').innerHTML = projAvg.length? projAvg.map(x=>{
+    const bb=baremo(x.v);
+    return `<div class="barcell" style="margin-bottom:9px"><span style="min-width:200px;font-size:13px;font-weight:500">${x.p.id} · ${x.p.name}</span>
+      <div class="track"><div class="trackfill" style="width:${Math.round(x.v*100)}%;background:${bb.color}"></div></div>
+      <span style="color:${bb.color};font-weight:600;min-width:40px">${pct(x.v)}</span></div>`;
+  }).join('') : `<div style="color:var(--muted);font-size:13px">Sin datos suficientes.</div>`;
+}
+
+/* ============ EXPORTACIONES ============ */
+function download(name, content, type){
+  const blob=new Blob([content],{type:type||'text/plain;charset=utf-8'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name;
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+}
+function exportJSON(){
+  if(!rec){ toast('Selecciona una institución primero'); return; }
+  const ie=INSTS.find(i=>i.id===cur);
+  download(`PEM_${ie.id}_${(ie.name).replace(/[^\w]+/g,'_')}.json`, JSON.stringify(rec,null,2), 'application/json');
+}
+function csvRow(s){
+  // s = summarize()
+  const cols=[s.id, s.name, s.zone,
+    pctN(s.lines.L1), pctN(s.lines.L2), pctN(s.lines.L3),
+    pctN(s.g), baremo(s.g).lvl, s.inst===null?'':Math.round(s.inst*100),
+    ...PROJECTS.map(p=>pctN(s.pr[p.id]))];
+  return cols.map(csvCell).join(',');
+}
+const pctN = v => v===null?'':Math.round(v*100);
+function csvCell(v){ const t=String(v??''); return /[",\n;]/.test(t)?'"'+t.replace(/"/g,'""')+'"':t; }
+function csvHeader(){
+  return ['Codigo','Institucion','Zona','L1_Equidad','L2_Calidad','L3_Pertinencia',
+    'Global','Nivel','Institucionalizacion_%', ...PROJECTS.map(p=>p.id+'_'+p.name.slice(0,24))].map(csvCell).join(',');
+}
+function exportCSV(){
+  if(!rec){ toast('Selecciona una institución primero'); return; }
+  const s=summarize(rec);
+  download(`PEM_${s.id}_fila.csv`, '\ufeff'+csvHeader()+'\n'+csvRow(s), 'text/csv;charset=utf-8');
+}
+function exportRank(){
+  const rows=allRecords().map(summarize).filter(x=>x.g!==null).sort((a,b)=>b.g-a.g);
+  if(!rows.length){ toast('No hay fichas para exportar'); return; }
+  const body=rows.map((r,i)=>('#'+(i+1))+','+csvRow(r)).join('\n');
+  download('PEM_Escalafon_Necocli.csv', '\ufeff'+'Puesto,'+csvHeader()+'\n'+body, 'text/csv;charset=utf-8');
+}
+function importJSON(file, many){
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const r=JSON.parse(reader.result); migrate(r);
+      if(!r.ie) throw 0;
+      localStorage.setItem(KEY+r.ie, JSON.stringify(r));
+      if(!many){ loadRecord(r.ie); renderAll(); toast('Ficha cargada'); }
+      else { renderRank(); toast('Ficha(s) importada(s)'); }
+    }catch(e){ toast('Archivo no válido'); }
+  };
+  reader.readAsText(file);
+}
+
+/* ============ UI: TABS, TOAST ============ */
+function toast(msg){ const t=document.getElementById('toast'); t.innerHTML='✓ '+msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===name));
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  if(name==='diag'){ renderScorebar(); renderDiag(); }
+  if(name==='inst') renderInst();
+  if(name==='hall') renderHall();
+  if(name==='rank') renderRank();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function renderAll(){ renderIdent(); renderScorebar(); renderDiag(); renderInst(); renderHall(); }
+
+/* ============ INIT ============ */
+function init(){
+  fillIESelect(); bindIdent();
+  document.getElementById('f_ie').addEventListener('change',e=>{
+    if(!e.target.value){ cur=null; rec=null; renderAll(); return; }
+    loadRecord(e.target.value); renderAll(); toast('Ficha de '+INSTS.find(i=>i.id===cur).name);
+  });
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+    if(t.dataset.tab!=='ficha' && t.dataset.tab!=='rank' && !rec){ toast('Selecciona una institución primero'); showTab('ficha'); return; }
+    showTab(t.dataset.tab);
+  }));
+  document.getElementById('btnGoDiag').addEventListener('click',()=>{ if(!rec){toast('Selecciona una institución');return;} showTab('diag'); });
+  document.getElementById('btnExportJSON').addEventListener('click',exportJSON);
+  document.getElementById('btnExportCSV').addEventListener('click',exportCSV);
+  document.getElementById('btnPrint').addEventListener('click',()=>window.print());
+  document.getElementById('btnImportJSON').addEventListener('click',()=>document.getElementById('fileJSON').click());
+  document.getElementById('fileJSON').addEventListener('change',e=>{ if(e.target.files[0]) importJSON(e.target.files[0],false); e.target.value=''; });
+  document.getElementById('btnClear').addEventListener('click',()=>{
+    if(!rec) return;
+    if(confirm('¿Borrar todos los datos registrados de '+INSTS.find(i=>i.id===cur).name+'? Esta acción no se puede deshacer.')){
+      localStorage.removeItem(KEY+cur); rec=blankRecord(INSTS.find(i=>i.id===cur)); save(); renderAll(); toast('Ficha reiniciada');
+    }
+  });
+  document.getElementById('btnAddCompromiso').addEventListener('click',()=>{ rec.compromisos.push({c:'',r:'',f:''}); save(); renderCompromisos(); });
+  document.getElementById('signDrop').addEventListener('click',(e)=>{ if(e.target.closest('a,button')) return; document.getElementById('sg_file').click(); });
+  document.getElementById('sg_file').addEventListener('change',e=>{ if(e.target.files[0]) handleSignFile(e.target.files[0]); e.target.value=''; });
+  const dz=document.getElementById('signDrop');
+  ['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{ e.preventDefault(); dz.classList.add('dragover'); }));
+  ['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{ e.preventDefault(); dz.classList.remove('dragover'); }));
+  dz.addEventListener('drop',e=>{ if(e.dataTransfer.files[0]) handleSignFile(e.dataTransfer.files[0]); });
+  document.getElementById('btnSaveSigned').addEventListener('click',saveSigned);
+  document.getElementById('rankZone').addEventListener('change',renderRank);
+  document.getElementById('btnExportRank').addEventListener('click',exportRank);
+  document.getElementById('btnImportMany').addEventListener('click',()=>document.getElementById('fileMany').click());
+  document.getElementById('fileMany').addEventListener('change',e=>{ [...e.target.files].forEach(f=>importJSON(f,true)); e.target.value=''; });
+  renderAll();
+}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
