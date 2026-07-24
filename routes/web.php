@@ -8,7 +8,8 @@ use App\Http\Controllers\SchoolController;
 
 // ── Página pública principal ───────────────────────────────────────────────
 Route::get('/', function () {
-    return view('home');
+    $news = \App\Models\News::active()->take(5)->get();
+    return view('home',compact('news'));
 })->name('home');
 
 // ── Zona pública — Huellas ─────────────────────────────────────────────────
@@ -39,6 +40,7 @@ Route::middleware(['auth', 'role:rector|editor|admin_mesa|superadmin'])
 
 // ── Admin — Moderación (solo admin_mesa y superadmin) ─────────────────────
 // OI-017 resuelto: role middleware protege todas las rutas de admin
+
 Route::middleware(['auth', 'role:admin_mesa|superadmin'])
     ->prefix('admin')
     ->name('admin.')
@@ -48,6 +50,7 @@ Route::middleware(['auth', 'role:admin_mesa|superadmin'])
         Route::patch('huellas/{post}/reject',    [HuellaModerationController::class, 'reject'])->name('huellas.reject');
         Route::patch('huellas/{post}/feature',   [HuellaModerationController::class, 'feature'])->name('huellas.feature');
         Route::get('huellas/publicadas',         [HuellaModerationController::class, 'published'])->name('huellas.published');
+        Route::resource('news', \App\Http\Controllers\Admin\NewsController::class);
     });
 
     Route::get('/quienes-somos', function () {

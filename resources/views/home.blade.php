@@ -274,14 +274,27 @@ button{font-family:inherit;cursor:pointer;}
     </div>
 
     <h3 class="section-title">Novedades del PEM</h3>
-    <div class="news-card">
-      <div class="news-icon">📰</div>
-      <div class="news-body">
-        <div class="news-title">Sesión Nº3 aprobó nuevas metas de cobertura rural</div>
-        <div class="news-meta">15 mar 2026 · Acta disponible</div>
-      </div>
+    @forelse($news as $item)
+  <div class="news-card">
+    <div class="news-icon">{{ $item->icon }}</div>
+    <div class="news-body">
+      @if($item->link)
+        <a href="{{ $item->link }}" target="_blank" class="news-title">{{ $item->title }}</a>
+      @else
+        <div class="news-title">{{ $item->title }}</div>
+      @endif
+      <div class="news-meta">{{ $item->meta }}</div>
     </div>
   </div>
+@empty
+  <div class="news-card">
+    <div class="news-icon">📰</div>
+    <div class="news-body">
+      <div class="news-title">Próximamente nuevas novedades del PEM</div>
+      <div class="news-meta">Mantente atento</div>
+    </div>
+  </div>
+@endforelse
 
   <div>
     <div class="sb-title">Nuestros Colegios</div>
