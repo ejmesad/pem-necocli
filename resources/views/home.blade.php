@@ -235,7 +235,7 @@ button{font-family:inherit;cursor:pointer;}
       <div class="kpi-lbl">Metas activas</div>
     </div>
     <div class="kpi-item">
-      <div class="kpi-num c4">Jun 12</div>
+      <div class="kpi-num c4">Jul 27</div>
       <div class="kpi-lbl">Próxima sesión</div>
     </div>
   </div>
@@ -295,7 +295,7 @@ button{font-family:inherit;cursor:pointer;}
     </div>
   </div>
 @endforelse
-
+</div>
   <div>
     <div class="sb-title">Nuestros Colegios</div>
     <div class="sb-card">
